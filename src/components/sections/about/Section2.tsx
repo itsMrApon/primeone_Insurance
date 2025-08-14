@@ -24,8 +24,8 @@ export default function Section2() {
                                 <div>
                                     <Image src={img1} alt="PrimeOne" />
                                 </div>
-                                <h6 className="mt-5 mb-3 text-anime-style-2">Life Insurance</h6>
-                                <p className="mb-5">We offer a wide range of digital market services that cater.</p>
+                                <h6 className="mt-5 mb-3 text-anime-style-2">Insurance</h6>
+                                <p className="mb-5">We offer a wide range of insurance services that cater.</p>
                                 <Link href="/portfolio-details" className="text-uppercase fs-7 fw-bold text-primary-2 hover-up">
                                     read more
                                 </Link>
@@ -36,8 +36,8 @@ export default function Section2() {
                                 <div>
                                     <Image src={img2} alt="PrimeOne" />
                                 </div>
-                                <h6 className="mt-5 mb-3 text-anime-style-2">Home Insurance</h6>
-                                <p className="mb-5">We offer a wide range of digital market services that cater.</p>
+                                <h6 className="mt-5 mb-3 text-anime-style-2">Tax Consultation</h6>
+                                <p className="mb-5">We offer a wide range of tax services that cater.</p>
                                 <Link href="/portfolio-details" className="text-uppercase fs-7 fw-bold text-primary-2 hover-up">
                                     read more
                                 </Link>
@@ -48,8 +48,8 @@ export default function Section2() {
                                 <div>
                                     <Image src={img3} alt="PrimeOne" />
                                 </div>
-                                <h6 className="mt-5 mb-3 text-anime-style-2">Car Insurance</h6>
-                                <p className="mb-5">We offer a wide range of digital market services that cater.</p>
+                                <h6 className="mt-5 mb-3 text-anime-style-2">Other Services</h6>
+                                <p className="mb-5">We offer a wide range of apply services that cater.</p>
                                 <Link href="/portfolio-details" className="text-uppercase fs-7 fw-bold text-primary-2 hover-up">
                                     read more
                                 </Link>

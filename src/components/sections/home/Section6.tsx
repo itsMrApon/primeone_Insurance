@@ -22,7 +22,7 @@ export default function Section6() {
                                 <div className="position-relative z-2 d-flex flex-lg-nowrap flex-wrap justify-content-center justify-content-lg-around align-items-center gap-5">
                                     <p className="border-start border-2 border-primary ps-3 text-anime-style-3">
                                         Trusted by more than <br />
-                                        <span className="text-primary-2 fw-bold">1000+ clients</span>
+                                        <span className="text-primary-2 fw-bold">100+ clients</span>
                                         worldwide.
                                     </p>
                                     <Link data-aos="fade-left" data-aos-delay={0} href="#" className="d-flex align-items-center rounded-start-lg-3">
@@ -35,7 +35,7 @@ export default function Section6() {
                                                 <path fillRule="evenodd" clipRule="evenodd" d="M11.9834 21.9268C16.2006 15.3305 22.8738 10.1083 31.0119 9.38978C29.9915 0.948352 13.8928 2.69842 12.0826 20.6926C12.0407 21.1133 12.0072 21.5243 11.9834 21.9254" fill="#0D6EFD" />
                                             </g>
                                         </svg>
-                                        <span className="fs-30 fw-bold text-dark ms-2">PrimeOne</span>
+                                        <span className="fs-30 fw-bold text-dark ms-2">sts</span>
                                     </Link>
                                     <Link data-aos="fade-left" data-aos-delay={200} href="#" className="d-flex align-items-center">
                                         <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" width={36} height={40} viewBox="0 0 36 40" fill="none">
@@ -60,7 +60,7 @@ export default function Section6() {
                                                 <path fillRule="evenodd" clipRule="evenodd" d="M32.782 23.7602C34.3054 24.7035 35.7531 26.0068 35.7531 27.5741V17.3251C35.5621 17.1968 35.358 17.07 35.1408 16.9432L29.7496 13.609C29.7496 14.1586 29.439 14.4356 29.0337 14.2869L21.2049 9.44379V9.45399C20.7996 9.30529 20.4905 9.58083 20.4905 10.1319C20.4905 10.683 20.8011 11.3536 21.2049 11.686L24.2213 13.5507C24.6513 13.8656 24.9939 14.5639 24.9939 15.15C24.9939 15.6996 24.6834 15.9766 24.2781 15.8279L21.2049 13.9268C20.7209 13.7489 20.3477 14.0799 20.3477 14.7388C20.3477 15.3978 20.7223 16.2011 21.2049 16.5991L32.782 23.7602Z" fill="#0D6EFD" />
                                             </g>
                                         </svg>
-                                        <span className="fs-30 fw-bold text-dark ms-2">Purei</span>
+                                        <span className="fs-30 fw-bold text-dark ms-2">ATC</span>
                                     </Link>
                                     <Link data-aos="fade-left" data-aos-delay={400} href="#" className="d-flex align-items-center">
                                         <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" width={35} height={40} viewBox="0 0 35 40" fill="none">
@@ -74,7 +74,7 @@ export default function Section6() {
                                                 <path d="M11.2649 22.0096C11.668 23.2748 12.4725 24.3672 13.532 25.1405C14.552 25.8857 15.8172 26.3267 17.1893 26.3267C18.5614 26.3267 19.8266 25.8857 20.8466 25.1405C21.9061 24.3672 22.7106 23.2731 23.1137 22.0096L26.6624 23.1333C26.0126 25.1717 24.7309 26.9222 23.0512 28.1479C21.4027 29.3522 19.3741 30.0646 17.1877 30.0646C15.0012 30.0646 12.9743 29.3538 11.3241 28.1479C9.64437 26.9206 8.36275 25.1701 7.71289 23.1333L11.2616 22.0096H11.2649Z" fill="#0D6EFD" />
                                             </g>
                                         </svg>
-                                        <span className="fs-30 fw-bold text-dark ms-2">Freshzi</span>
+                                        <span className="fs-30 fw-bold text-dark ms-2">sudotechserve</span>
                                     </Link>
                                     <Link data-aos="fade-left" data-aos-delay={600} href="#" className="d-flex align-items-center">
                                         <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" width={45} height={40} viewBox="0 0 45 40" fill="none">
@@ -87,7 +87,7 @@ export default function Section6() {
                                                 />
                                             </g>
                                         </svg>
-                                        <span className="fs-30 fw-bold text-dark ms-2">YellPure</span>
+                                        <span className="fs-30 fw-bold text-dark ms-2">DeshiVoj</span>
                                     </Link>
                                 </div>
                             </div>
