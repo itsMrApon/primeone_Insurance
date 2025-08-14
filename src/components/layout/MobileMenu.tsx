@@ -56,7 +56,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <span className="menu-expand" onClick={() => handleAccordion(1)}>
                                                 <i className="arrow-small-down" />
                                             </span>
-                                            <Link href="#">Services</Link>
+                                            <Link href="#">Insurance</Link>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
                                                 <li>
                                                     <Link href="/insurance">All Insurance</Link>
@@ -85,16 +85,16 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <Link href="/tax">Tax</Link>
                                         </li>
                                         <li className="has-children">
-                                            <Link href="#">Blog</Link>
+                                            <Link href="#">Tax</Link>
                                             <span className="menu-expand" onClick={() => handleAccordion(2)}>
                                                 <i className="arrow-small-down" />
                                             </span>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 2 ? "block" : "none"}` }}>
                                                 <li>
-                                                    <Link href="/other">News</Link>
+                                                    <Link href="/other">All Services</Link>
                                                 </li>
                                                 <li>
-                                                    <Link href="/blog-details">News Details</Link>
+                                                    <Link href="/blog-details">01. Notary</Link>
                                                 </li>
                                             </ul>
                                         </li>

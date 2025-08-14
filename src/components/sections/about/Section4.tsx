@@ -116,7 +116,7 @@ export default function Section4() {
                                         <path d="M11.2649 22.0096C11.668 23.2748 12.4725 24.3672 13.532 25.1405C14.552 25.8857 15.8172 26.3267 17.1893 26.3267C18.5614 26.3267 19.8266 25.8857 20.8466 25.1405C21.9061 24.3672 22.7106 23.2731 23.1137 22.0096L26.6624 23.1333C26.0126 25.1717 24.7309 26.9222 23.0512 28.1479C21.4027 29.3522 19.3741 30.0646 17.1877 30.0646C15.0012 30.0646 12.9743 29.3538 11.3241 28.1479C9.64437 26.9206 8.36275 25.1701 7.71289 23.1333L11.2616 22.0096H11.2649Z" fill="#0D6EFD" />
                                     </g>
                                 </svg>
-                                <span className="fs-30 fw-bold text-white ms-2">TLC</span>
+                                <span className="fs-30 fw-bold text-white ms-2">Tax</span>
                             </Link>
                             <Link href="#" className="d-flex align-items-center" data-aos="fade-left" data-aos-delay={600}>
                                 <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" width={45} height={40} viewBox="0 0 45 40" fill="none">
@@ -129,7 +129,7 @@ export default function Section4() {
                                         />
                                     </g>
                                 </svg>
-                                <span className="fs-30 fw-bold text-white ms-2">DMV</span>
+                                <span className="fs-30 fw-bold text-white ms-2">Apply</span>
                             </Link>
                             <Link href="#" className="d-flex align-items-center rounded-start-lg-3" data-aos="fade-left" data-aos-delay={800}>
                                 <svg className="fill-primary" xmlns="http://www.w3.org/2000/svg" width={43} height={40} viewBox="0 0 43 40" fill="none">
