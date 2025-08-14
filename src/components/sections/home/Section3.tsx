@@ -28,7 +28,7 @@ export default function Section3() {
                                                                 <span className="btn-text text-primary">01</span>
                                                             </div>
                                                             <h2 className="text-anime-style-2 text-primary-2 my-3">Insurance</h2>
-                                                            <p>We offer a wide range of digital market services that cater to business of all sizes a forward-think and clever approach. Hands down one of the best shirts I’ve ever owned. Fits great, feels amazing, seems.</p>
+                                                            <p>We offer a wide range of insurance agency services that cater to cover all sizes a coverage and flexible approach. Hands down one of the best Insurance in nyc where we provide top-notch solutions.</p>
                                                             <div className="mt-lg-auto mt-6">
                                                                 <Link href="/insurance" className="btn btn-white hover-up">
                                                                     <span className="text-primary-2">read more</span>
@@ -64,7 +64,7 @@ export default function Section3() {
                                                                 <span className="btn-text text-primary">02</span>
                                                             </div>
                                                             <h2 className="text-anime-style-2 text-white my-3">Tax Concentration</h2>
-                                                            <p className="text-white">We offer a wide range of digital market services that cater to business of all sizes a forward-think and clever approach. Hands down one of the best shirts I’ve ever owned. Fits great, feels amazing, seems.</p>
+                                                            <p className="text-white">We provide a indepth analysis with concentration to our client tax judging by the market and business so that we can offer tailored solutions for businesses and personal income of all sizes and needs. Great price, in Queens, seems effective.</p>
                                                             <div className="mt-lg-auto mt-6">
                                                                 <Link href="/tax" className="btn btn-primary hover-up">
                                                                     <span className="text-white">read more</span>
@@ -100,7 +100,7 @@ export default function Section3() {
                                                                 <span className="btn-text text-white">03</span>
                                                             </div>
                                                             <h2 className="text-anime-style-2 text-white my-3">Other Services</h2>
-                                                            <p className="text-white">We offer a wide range of digital market services that cater to business of all sizes a forward-think and clever approach. Hands down one of the best shirts I’ve ever owned. Fits great, feels amazing, seems.</p>
+                                                            <p className="text-white">We do Notary Public, visa, Air tickets, immigration, asylum, apply for green cards, and more.You name a application and we have the solution.</p>
                                                             <div className="mt-lg-auto mt-6">
                                                                 <Link href="/other" className="btn btn-white hover-up">
                                                                     <span className="text-primary-2">read more</span>

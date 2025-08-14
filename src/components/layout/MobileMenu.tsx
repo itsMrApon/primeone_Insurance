@@ -85,7 +85,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <Link href="/tax">Tax</Link>
                                         </li>
                                         <li className="has-children">
-                                            <Link href="#">Tax</Link>
+                                            <Link href="#">Other</Link>
                                             <span className="menu-expand" onClick={() => handleAccordion(2)}>
                                                 <i className="arrow-small-down" />
                                             </span>
@@ -96,10 +96,19 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                                 <li>
                                                     <Link href="/blog-details">01. Notary</Link>
                                                 </li>
+                                                <li>
+                                                    <Link href="/blog-details">02. Air Ticket</Link>
+                                                </li>
                                             </ul>
                                         </li>
                                         <li>
                                             <Link href="/contact">Contact</Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/signin">Sign In</Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/signup">Sign Up</Link>
                                         </li>
                                     </ul>
                                 </nav>
@@ -119,17 +128,18 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                         </div>
                         <div className="social-links">
                             <div className="social-icons gap-4 mt-4">
-                                <Link href="#" className="border border-opacity-10 border-white icon-shape icon-md">
+                                <Link href="https://www.facebook.com/100050273034759/mentions/?_rdr
+https://share.google/c1NKmbY2MjDQlQjEN" className="border border-opacity-10 border-white icon-shape icon-md">
                                     <i className="bi bi-facebook" />
                                 </Link>
-                                <Link href="#" className="border border-opacity-10 border-white icon-shape icon-md">
+                                <Link href="https://twitter.com/intent/user?screen_name=primeoneofficial" className="border border-opacity-10 border-white icon-shape icon-md">
                                     <i className="bi bi-twitter-x" />
                                 </Link>
-                                <Link href="#" className="border border-opacity-10 border-white icon-shape icon-md">
+                                <Link href="agents.farmers.com/ny/woodside/delowar-hossain" className="border border-opacity-10 border-white icon-shape icon-md">
                                     <i className="bi bi-linkedin" />
                                 </Link>
-                                <Link href="#" className="border border-opacity-10 border-white icon-shape icon-md">
-                                    <i className="bi bi-behance" />
+                                <Link href="http://youtube.com/@primeoneofficial" className="border border-opacity-10 border-white icon-shape icon-md">
+                                    <i className="bi bi-youtube" />
                                 </Link>
                             </div>
                         </div>

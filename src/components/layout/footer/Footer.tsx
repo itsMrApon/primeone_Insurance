@@ -51,7 +51,7 @@ export default function Footer() {
                                             <p className="text-white">Delowar Hossain</p>
                                         </Link>
                                         <div className="social-icons d-none d-md-flex gap-2 mt-4">
-                                            <Link href="https://www.facebook.com/delowar.bai" className="border border-opacity-10 border-white icon-shape icon-md">
+                                            <Link href="https://www.facebook.com/100050273034759/mentions/?_rdrhttps://share.google/c1NKmbY2MjDQlQjEN" className="border border-opacity-10 border-white icon-shape icon-md">
                                                 <i className="bi bi-facebook" />
                                             </Link>
                                             <Link href="http://youtube.com/@primeoneofficial" className="border border-opacity-10 border-white icon-shape icon-md">
@@ -71,19 +71,19 @@ export default function Footer() {
                                                 <h6 className="pb-3 text-white border-bottom pb-4 mb-4 border-white border-opacity-25">Company</h6>
                                                 <div className="row">
                                                     <div className="col-6 d-flex flex-column align-items-start">
-                                                        <Link href="#">
+                                                        <Link href="/about">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">About</p>
                                                         </Link>
-                                                        <Link href="#">
+                                                        <Link href="/insurance">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Insurance</p>
                                                         </Link>
-                                                        <Link href="#">
+                                                        <Link href="/other">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Works</p>
                                                         </Link>
-                                                        <Link href="#">
+                                                        <Link href="/about">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Career</p>
                                                         </Link>
-                                                        <Link href="#">
+                                                        <Link href="/contact">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Get In Touch</p>
                                                         </Link>
                                                     </div>
@@ -104,19 +104,13 @@ export default function Footer() {
                                                 <h6 className="pb-3 text-white border-bottom pb-4 mb-4 border-white border-opacity-25">Our Insurance</h6>
                                                 <div className="d-flex flex-column align-items-start">
                                                     <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Life Insurance</p>
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Tlc services</p>
                                                     </Link>
                                                     <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Car Insurance</p>
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Dmv services</p>
                                                     </Link>
                                                     <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">business insurance</p>
-                                                    </Link>
-                                                    <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">family care</p>
-                                                    </Link>
-                                                    <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">home loan insurance</p>
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">DMV express</p>
                                                     </Link>
                                                 </div>
                                             </div>
@@ -128,16 +122,16 @@ export default function Footer() {
                                     <div className="position-absolute bottom top-50 end-100 translate-middle-y w-100 h-100 d-lg-none d-block" />
                                     <div className="bottom d-flex flex-column flex-md-row gap-3 align-items-center py-4 ps-lg-10">
                                         <div className="d-flex align-items-center justify-content-center flex-wrap gap-md-5 gap-3">
-                                            <Link href="#">
+                                            <Link href="/about">
                                                 <span className="btn-text text-white">About</span>
                                             </Link>
-                                            <Link href="#">
+                                            <Link href="/insurance">
                                                 <span className="btn-text text-white">Solutions</span>
                                             </Link>
-                                            <Link href="#">
+                                            <Link href="/contact">
                                                 <span className="btn-text text-white">Pricing</span>
                                             </Link>
-                                            <Link href="#">
+                                            <Link href="/other">
                                                 <span className="btn-text text-white">Resources</span>
                                             </Link>
                                         </div>

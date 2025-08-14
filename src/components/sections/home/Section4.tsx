@@ -103,7 +103,7 @@ export default function Section4() {
                                         </div>
                                     </div>
                                 </div>
-                                <Image src={img4} alt="Primeone" />
+                                <Image src={img4} alt="Primeone" className="img-fluid w-100" />
                             </div>
                         </div>
                     </div>

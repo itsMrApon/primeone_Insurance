@@ -18,8 +18,9 @@ export default function Section1() {
                         <div className="row">
                             <div className="col-lg-7 col-md-12">
                                 <h1 className="mt-3 mb-0 mb-7 ds-1 text-opacity-25 text-white text-anime-style-2">
-                                    Insurance <br className="d-block" />
-                                    <span className="text-white text-opacity-100">solutions.</span>
+                                    insuranc<br className="d-block" />
+                                    & tax<br className="d-block" />
+                                    <span className="text-white text-opacity-100">solutions</span>
                                 </h1>
                                 <div className="d-flex align-items-center gap-5">
                                     <Link href="/contact" className="btn btn-primary bg-primary" data-aos="fade-up" data-aos-delay={200}>
@@ -43,7 +44,7 @@ export default function Section1() {
                                         <span className="icon-shape icon-50 rounded-circle border border-white hover-up play-btn bg-transparent">
                                             <i className="ri-play-fill text-white" />
                                         </span>
-                                        <span className="text-white fw-bold ms-2"> Intro story </span>
+                                        <span className="text-white fw-bold ms-2">Intro story </span>
                                     </Link>
                                 </div>
                             </div>
@@ -84,6 +85,12 @@ export default function Section1() {
                                                         <input type="checkbox" className="car" name="options-outlined" id="car" />
                                                         <label className="car icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="car">
                                                             <i className="fa-solid fa-car text-primary-2 fs-20" />
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-element">
+                                                        <input type="checkbox" className="tax" name="options-outlined" id="tax" />
+                                                        <label className="tax icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="tax">
+                                                            <i className="fa-solid fa-calculator text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">

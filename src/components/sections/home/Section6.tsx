@@ -96,7 +96,7 @@ export default function Section6() {
                 </div>
                 <div className="container text-end">
                     <div className="position-relative d-inline-block">
-                        <Image className="wow img-custom-anim-left" src={img1} alt="PrimeOne" />
+                        <Image className="wow img-custom-anim-left img-fluid w-100" src={img1} alt="PrimeOne" />
                         <div className="position-absolute top-50 start-md-100 start-50 translate-middle bg-white icon-shape icon-160 rounded-circle border border-primary">
                             <Link
                                 href="#"
