@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="Case study" current_page="tax" />
+                <PageHeader title="Tax withCase study" current_page="tax" />
                 <Section1 />
                 <Section2 />
                 <Section4 />

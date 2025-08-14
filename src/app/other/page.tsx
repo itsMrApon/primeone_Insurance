@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="Our Inside" current_page="Other" />
+                <PageHeader title="Our Services" current_page="Other" />
                 <Section7 />
                 <Section1 />
                 <Pagination />
