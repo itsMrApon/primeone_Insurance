@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import img1 from "@/assets/imgs/pages/insurance-consultancy/page-home/home-section-2/img-1.jpg";
+import img2 from "@/assets/imgs/pages/insurance-consultancy/page-home/home-section-2/img-2.png";
 
 export default function Section2() {
     return (
@@ -48,16 +49,15 @@ export default function Section2() {
                                         <p className="fs-10 text-uppercase mb-0">Client Satisfaction</p>
                                     </div>
                                 </div>
+                                <div className="icon-shape icon-177 bg-white border rounded-circle text-center" data-aos="fade-up" data-aos-delay={400}>
+                                    <div>
+                                        <Image src={img2} alt="Icon 3" className="img-fluid" />
+                                    </div>
+                                </div>
                                 <div className="icon-shape icon-177 bg-white border rounded-circle text-center" data-aos="fade-up" data-aos-delay={200}>
                                     <div>
                                         <h5 className="text-primary-2">10+</h5>
                                         <p className="fs-10 text-uppercase mb-0">worldwide capture</p>
-                                    </div>
-                                </div>
-                                <div className="icon-shape icon-177 bg-white border rounded-circle text-center" data-aos="fade-up" data-aos-delay={400}>
-                                    <div>
-                                        <h5 className="text-primary-2">99.9%</h5>
-                                        <p className="fs-10 text-uppercase mb-0">Client Satisfaction</p>
                                     </div>
                                 </div>
                                 <div className="icon-shape icon-177 bg-white border rounded-circle text-center" data-aos="fade-up" data-aos-delay={600}>

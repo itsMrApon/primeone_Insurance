@@ -94,8 +94,8 @@ export default function Section6() {
                         </div>
                     </div>
                 </div>
-                <div className="container text-end">
-                    <div className="position-relative d-inline-block">
+                <div className="container-fluid text-end">
+                    <div className="position-relative d-inline-block w-100">
                         <Image className="wow img-custom-anim-left img-fluid w-100" src={img1} alt="PrimeOne" />
                         <div className="position-absolute top-50 start-md-100 start-50 translate-middle bg-white icon-shape icon-160 rounded-circle border border-primary">
                             <Link
@@ -110,12 +110,12 @@ export default function Section6() {
                             </Link>
                             <div className="position-absolute top-50 start-50 translate-middle w-100">
                                 <h6 className="circle-text rotateme text-dark fw-semibold">
-                                    <span>/ play /</span>
-                                    <span>play /</span>
-                                    <span>play /</span>
-                                    <span>play /</span>
-                                    <span>play /</span>
-                                    <span>play /</span>
+                                    <span>/ prime /</span>
+                                    <span>one /</span>
+                                    <span>prime /</span>
+                                    <span>one /</span>
+                                    <span>prime /</span>
+                                    <span>one /</span>
                                     <span>/</span>
                                 </h6>
                             </div>
