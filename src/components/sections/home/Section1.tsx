@@ -94,6 +94,12 @@ export default function Section1() {
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
+                                                        <input type="checkbox" className="mortgage" name="options-outlined" id="mortgage" />
+                                                        <label className="mortgage icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="mortgage">
+                                                            <i className="fa-solid fa-house text-primary-2 fs-20" />
+                                                        </label>
+                                                    </div>
+                                                    <div className="form-element">
                                                         <input type="checkbox" className="laptop" name="options-outlined" id="laptop" />
                                                         <label className="laptop icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="laptop">
                                                             <i className="fa-solid fa-laptop-medical text-primary-2 fs-20" />
