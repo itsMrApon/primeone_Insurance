@@ -10,7 +10,7 @@ export default function Section1() {
                 <div className="container">
                     <div className="row g-5 position-relative">
                         <div className="col-lg-6">
-                            <Image className="wow img-custom-anim-top" src={img1} alt="PrimeOne" />
+                            <Image className="wow img-custom-anim-top img-fluid " src={img1} alt="PrimeOne" />
                         </div>
                         <div className="col-lg-6 ps-lg-6">
                             <div className="d-flex flex-md-row flex-column gap-5 pe-lg-8">

@@ -5,7 +5,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="Contact Us" current_page="Contact" />
+                <PageHeader title="Contact ✉️Us" current_page="Contact" />
                 <Section1 />
             </Layout>
         </>
