@@ -94,10 +94,13 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                                     <Link href="/other">All Services</Link>
                                                 </li>
                                                 <li>
-                                                    <Link href="/blog-details">01. Notary</Link>
+                                                    <Link href="/blog-details">01.Mortgage</Link>
                                                 </li>
                                                 <li>
-                                                    <Link href="/blog-details">02. Air Ticket</Link>
+                                                    <Link href="/blog-details">02. Notary</Link>
+                                                </li>
+                                                <li>
+                                                    <Link href="/blog-details">03. Air Ticket</Link>
                                                 </li>
                                             </ul>
                                         </li>
@@ -105,10 +108,10 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <Link href="/contact">Contact</Link>
                                         </li>
                                         <li>
-                                            <Link href="/signin">Sign In</Link>
+                                            <Link href="/signin">SIGN IN</Link>
                                         </li>
                                         <li>
-                                            <Link href="/signup">Sign Up</Link>
+                                            <Link href="/signup">SIGN UP</Link>
                                         </li>
                                     </ul>
                                 </nav>
@@ -123,6 +126,10 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                 </li>
                                 <li>
                                     <span className="opacity-50">Phone:</span> <Link href="/tel:(917)745-0549">+(917)745-0549</Link>
+                                </li>
+                                <li>
+                                    <span className="opacity-50">Address:</span> <Link href="/https://maps.app.goo.gl/MBxj5gZr5hLE6Ckf8">69-03 Woodside Ave Woodside, <br />
+                                                 NY 11377, USA</Link>
                                 </li>
                             </ul>
                         </div>

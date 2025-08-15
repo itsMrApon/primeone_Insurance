@@ -58,12 +58,17 @@ export default function MainMenu() {
                     </li>
                     <li>
                         <Link className="dropdown-item text-capitalize" href="/blog-details">
-                            01. Notary
+                            01. Morgage
                         </Link>
                     </li>
                     <li>
                         <Link className="dropdown-item text-capitalize" href="/blog-details">
-                            02. Air Ticket
+                            02. Notary
+                        </Link>
+                    </li>
+                    <li>
+                        <Link className="dropdown-item text-capitalize" href="/blog-details">
+                            03. Air Ticket
                         </Link>
                     </li>
                 </ul>

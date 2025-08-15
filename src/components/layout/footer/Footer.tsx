@@ -41,7 +41,7 @@ export default function Footer() {
                                             PrimeOne embarks on a journey of <br />
                                             learning &amp; solving insurance issues today.
                                         </p>
-                                        <Link href="#" className="d-flex gap-2">
+                                        <Link href="https://maps.app.goo.gl/MBxj5gZr5hLE6Ckf8" className="d-flex gap-2">
                                             <p className="text-white">
                                                 69-03 Woodside Ave Woodside, <br />
                                                  NY 11377, USA
@@ -74,15 +74,6 @@ export default function Footer() {
                                                         <Link href="/about">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">About</p>
                                                         </Link>
-                                                        <Link href="/insurance">
-                                                            <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Insurance</p>
-                                                        </Link>
-                                                        <Link href="/other">
-                                                            <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Works</p>
-                                                        </Link>
-                                                        <Link href="/about">
-                                                            <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Career</p>
-                                                        </Link>
                                                         <Link href="/contact">
                                                             <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Get In Touch</p>
                                                         </Link>
@@ -101,13 +92,22 @@ export default function Footer() {
                                                 </div>
                                             </div>
                                             <div className="col-lg-3 offset-md-2 col-md-5">
-                                                <h6 className="pb-3 text-white border-bottom pb-4 mb-4 border-white border-opacity-25">Our Insurance</h6>
+                                                <h6 className="pb-3 text-white border-bottom pb-4 mb-4 border-white border-opacity-25">Our Speciality</h6>
                                                 <div className="d-flex flex-column align-items-start">
                                                     <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Tlc services</p>
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">TLC services</p>
                                                     </Link>
                                                     <Link href="#">
-                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Dmv services</p>
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">DDC</p>
+                                                    </Link>
+                                                    <Link href="/insurance">
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Insurance</p>
+                                                    </Link>
+                                                    <Link href="/other">
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Tax</p>
+                                                    </Link>
+                                                    <Link href="/about">
+                                                        <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">Mortgage</p>
                                                     </Link>
                                                     <Link href="#">
                                                         <p className="hover-effect text-white text-opacity-50 text-capitalize text-nowrap">DMV express</p>
