@@ -18,7 +18,7 @@ export default function Section1() {
                         <div className="row">
                             <div className="col-lg-7 col-md-12">
                                 <h1 className="mt-3 mb-0 mb-7 ds-1 text-opacity-25 text-white text-anime-style-2">
-                                    insuranc<br className="d-block" />
+                                    insurance<br className="d-block" />
                                     & tax<br className="d-block" />
                                     <span className="text-white text-opacity-100">solutions</span>
                                 </h1>
@@ -126,7 +126,7 @@ export default function Section1() {
                                                             Privacy policy
                                                         </Link>
                                                         <br />
-                                                        of insurance company.
+                                                        of primeone.
                                                     </label>
                                                 </div>
                                             </div>
