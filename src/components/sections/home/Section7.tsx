@@ -15,9 +15,8 @@ export default function Section7() {
                 <div className="container position-relative z-1">
                     <div>
                         <h2 className="text-primary-2 text-anime-style-2">
-                            Highlight of other <span className="text-primary">services</span>
-                            <br />
-                            from PrimeOne.
+                            Highlight of other <span className="text-primary">services </span>
+                            <br/>&nbsp;from PrimeOne.
                         </h2>
                     </div>
                     <div className="row mt-8">
