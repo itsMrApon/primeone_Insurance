@@ -1,87 +1,218 @@
+"use client";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-
-const services = [
-    {
-        delay: "0",
-        link: "/portfolio-details",
-        img: "img-1.png",
-        icon: "icon-1.png",
-        title: "Life Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-    {
-        delay: "200",
-        link: "/portfolio-details",
-        img: "img-2.png",
-        icon: "icon-2.png",
-        title: "Home Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-    {
-        delay: "400",
-        link: "/portfolio-details",
-        img: "img-3.png",
-        icon: "icon-3.png",
-        title: "Car Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-    {
-        delay: "0",
-        link: "/portfolio-details",
-        img: "img-4.png",
-        icon: "icon-4.png",
-        title: "Business Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-    {
-        delay: "200",
-        link: "/portfolio-details",
-        img: "img-5.png",
-        icon: "icon-5.png",
-        title: "Education Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-    {
-        delay: "400",
-        link: "/portfolio-details",
-        img: "img-6.png",
-        icon: "icon-6.png",
-        title: "Emergency Insurance",
-        description: "We offer a wide range of digital market services that catering is ready.",
-    },
-];
+import Image from "next/image";
+import { getServicesByType } from "@/util/api";
+import { Service } from "@/types/service";
 
 export default function Section1() {
+    const [services, setServices] = useState<Service[]>([]);
+    const [filteredServices, setFilteredServices] = useState<Service[]>([]);
+    const [activeFilter, setActiveFilter] = useState<string>("*");
+    const [categories, setCategories] = useState<string[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetchInsuranceServices();
+    }, []);
+
+    const fetchInsuranceServices = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            
+            console.log('Fetching insurance services...');
+            const response = await getServicesByType("insurance");
+            
+            console.log('API Response:', response);
+            
+            if (response.success && response.data) {
+                console.log('Response data structure:', response.data);
+                
+                // Check if services_by_category exists and is not null
+                if (response.data.services_by_category && typeof response.data.services_by_category === 'object') {
+                    const allServices: Service[] = [];
+                    const categoryNames: string[] = [];
+                    
+                    // Extract all services and categories
+                    Object.entries(response.data.services_by_category).forEach(([categoryName, categoryServices]) => {
+                        const servicesArray = categoryServices as Service[];
+                        console.log(`Category: "${categoryName}", Services:`, servicesArray);
+                        
+                        allServices.push(...servicesArray);
+                        if (!categoryNames.includes(categoryName)) {
+                            categoryNames.push(categoryName);
+                        }
+                    });
+                    
+                    setServices(allServices);
+                    setFilteredServices(allServices);
+                    setCategories(categoryNames);
+                    
+                    console.log('All services loaded:', allServices);
+                    console.log('Categories extracted:', categoryNames);
+                    console.log('Services with their categories:', allServices.map(s => ({
+                        id: s.id,
+                        title: s.title,
+                        category_id: s.category_id,
+                        category_name: s.category?.name
+                    })));
+                } else {
+                    console.error('Invalid response structure - services_by_category is missing or null:', response.data);
+                    setError("Invalid API response structure");
+                }
+            } else {
+                console.error('API call failed:', response.error);
+                setError(response.error || "Failed to load services");
+            }
+        } catch (err) {
+            console.error('Fetch error:', err);
+            setError(err instanceof Error ? err.message : "An error occurred");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleFilter = (filter: string, categoryName?: string) => {
+        setActiveFilter(filter);
+        
+        if (filter === "*") {
+            setFilteredServices(services);
+        } else if (categoryName) {
+            console.log('Filtering by category:', categoryName);
+            console.log('Available services:', services);
+            
+            // Filter by category name
+            const filtered = services.filter(service => {
+                const match = service.category.name === categoryName;
+                console.log(`Service "${service.title}" category: "${service.category.name}" matches "${categoryName}": ${match}`);
+                return match;
+            });
+            
+            console.log('Filtered services:', filtered);
+            setFilteredServices(filtered);
+        }
+    };
+
+    const getIconPath = (sortOrder: number) => {
+        return `/assets/imgs/pages/insurance-consultancy/page-services/icon-${sortOrder}.png`;
+    };
+
+    const getDefaultImage = () => "/assets/imgs/pages/insurance-consultancy/page-details/img-3.png";
+
+    if (loading) {
+        return (
+            <section className="insurance-consultancy-portfolio-section-1 py-120 overflow-hidden">
+                <div className="container">
+                    <div className="text-center">
+                        <p>Loading professional services...</p>
+                    </div>
+                </div>
+            </section>
+        );
+    }
+
+    if (error && services.length === 0) {
+        return (
+            <section className="insurance-consultancy-portfolio-section-1 py-120 overflow-hidden">
+                <div className="container">
+                    <div className="text-center">
+                        <div className="alert alert-warning" role="alert">
+                            <h5>⚠️ API Connection Issue</h5>
+                            <p>{error}</p>
+                            <button 
+                                className="btn btn-primary mt-2" 
+                                onClick={() => {
+                                    setError(null);
+                                    fetchInsuranceServices();
+                                }}
+                            >
+                                Try Again
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
     return (
         <>
-            {/*insurance-consultancy-services section 1*/}
-            <section className="insurance-consultancy-services-section-1 py-120 overflow-hidden">
+            {/*insurance-consultancy-portfolio section 1*/}
+            <section className="insurance-consultancy-portfolio-section-1 py-120 overflow-hidden">
                 <div className="container">
-                    <div className="row justify-content-center g-5">
-                        {services.map((service, index) => (
-                            <div className="col-lg-4 col-md-6" key={index}>
-                                <div className="card-services bg-white d-flex flex-column h-100" data-aos="fade-up" data-aos-delay={service.delay}>
-                                    <Link href={service.link} className="position-relative">
+                    {error && (
+                        <div className="alert alert-warning mb-4" role="alert">
+                            <small>{error}</small>
+                        </div>
+                    )}
+                    <div className="text-center mb-3">
+                        <div className="button-group filter-button-group filter-menu-active">
+                            <button 
+                                aria-label="All" 
+                                className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === "*" ? "active" : ""}`} 
+                                onClick={() => handleFilter("*")}
+                            >
+                                all Services
+                            </button>
+                            {categories.map((category, index) => (
+                                <button 
+                                    key={index}
+                                    aria-label={category} 
+                                    className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === category ? "active" : ""}`} 
+                                    onClick={() => handleFilter(category, category)}
+                                >
+                                    {category}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+                    <div className="row g-5">
+                        {filteredServices.map((service) => (
+                            <div className="col-lg-4 col-md-6" key={service.id}>
+                                <div className="card-services bg-white d-flex flex-column h-100" data-aos="fade-up" data-aos-delay={service.price ? 0 : 200}>
+                                    <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}  className="position-relative">
                                         <div className="zoom-img">
-                                            <img className="w-100" src={`/assets/imgs/pages/insurance-consultancy/page-services/${service.img}`} alt={service.title} />
+                                            <Image
+                                                className="w-100"
+                                                src={service.image_1 || getDefaultImage()}
+                                                alt={service.title}
+                                                width={600}
+                                                height={400}
+                                                style={{ objectFit: 'cover' }}
+                                            />
                                         </div>
                                         <div className="position-absolute top-100 end-0 translate-middle-y me-5 icon-shape icon-80 bg-white shadow-1">
-                                            <img src={`/assets/imgs/pages/insurance-consultancy/page-services/${service.icon}`} alt={service.title} />
+                                            <Image
+                                                src={getIconPath(service.sort_order)}
+                                                alt={service.title}
+                                                width={80}
+                                                height={80}
+                                                onError={() => {
+                                                    console.log(`Icon not found for sort_order: ${service.sort_order}, expected path: ${getIconPath(service.sort_order)}`);
+                                                }}
+                                            />
                                         </div>
                                     </Link>
-                                    <Link href={service.link}>
+                                    <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}>
                                         <h6 className="mt-5 mb-3">{service.title}</h6>
                                     </Link>
                                     <p className="mb-5">{service.description}</p>
-                                    <Link href={service.link} className="link-article text-uppercase fs-7 fw-bold text-primary-2">
+                                    <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} className="link-article text-uppercase fs-7 fw-bold text-primary-2">
                                         Read More
                                     </Link>
                                 </div>
                             </div>
                         ))}
                     </div>
+                    {filteredServices.length === 0 && !loading && (
+                        <div className="text-center">
+                            <p>No other services found.</p>
+                        </div>
+                    )}
                 </div>
             </section>
         </>
     );
 }
+

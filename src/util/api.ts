@@ -123,62 +123,37 @@ class ApiClient {
     try {
       console.log(`Looking for service with ID: ${id}`);
       
-      // Since most service details are for tax services, try that first
-      console.log('Calling tax services API...');
-      const taxServicesResponse = await this.getServicesByType('tax');
+      // Try all service types to find the service
+      const serviceTypes = ['tax', 'insurance', 'other'];
       
-      console.log('Tax services response:', taxServicesResponse);
-      
-      if (taxServicesResponse.success && taxServicesResponse.data?.services_by_category) {
-        // Search in tax services first
-        for (const categoryName in taxServicesResponse.data.services_by_category) {
-          const servicesInCategory = taxServicesResponse.data.services_by_category[categoryName];
-          console.log(`Tax category "${categoryName}" has ${servicesInCategory.length} services:`, servicesInCategory.map(s => ({id: s.id, title: s.title})));
-          
-          const service = servicesInCategory.find((s: Service) => {
-            const match = s.id == id || String(s.id) === String(id);
-            console.log(`Checking service "${s.title}" (ID: ${s.id}, type: ${typeof s.id}) against target ${id} (type: ${typeof id}) - Match: ${match}`);
-            return match;
-          });
-          
-          if (service) {
-            console.log('Found service in tax category:', service);
-            return {
-              success: true,
-              data: service,
-            };
+      for (const serviceType of serviceTypes) {
+        console.log(`Searching in ${serviceType} services...`);
+        const response = await this.getServicesByType(serviceType);
+        
+        if (response.success && response.data?.services_by_category) {
+          // Search in this service type
+          for (const categoryName in response.data.services_by_category) {
+            const servicesInCategory = response.data.services_by_category[categoryName];
+            console.log(`${serviceType} category "${categoryName}" has ${servicesInCategory.length} services:`, servicesInCategory.map(s => ({id: s.id, title: s.title})));
+            
+            const service = servicesInCategory.find((s: Service) => {
+              const match = s.id == id || String(s.id) === String(id);
+              console.log(`Checking service "${s.title}" (ID: ${s.id}, type: ${typeof s.id}) against target ${id} (type: ${typeof id}) - Match: ${match}`);
+              return match;
+            });
+            
+            if (service) {
+              console.log(`Found service in ${serviceType} category:`, service);
+              return {
+                success: true,
+                data: service,
+              };
+            }
           }
         }
       }
       
-      // If not found in tax services, try all services
-      console.log('Service not found in tax services, trying all services...');
-      const allServicesResponse = await this.getAllServices();
-      
-      console.log('All services response:', allServicesResponse);
-      
-      if (allServicesResponse.success && allServicesResponse.data?.services_by_category) {
-        for (const categoryName in allServicesResponse.data.services_by_category) {
-          const servicesInCategory = allServicesResponse.data.services_by_category[categoryName];
-          console.log(`All services category "${categoryName}" has ${servicesInCategory.length} services:`, servicesInCategory.map(s => ({id: s.id, title: s.title})));
-          
-          const service = servicesInCategory.find((s: Service) => {
-            const match = s.id == id || String(s.id) === String(id);
-            console.log(`Checking service "${s.title}" (ID: ${s.id}) against target ${id} - Match: ${match}`);
-            return match;
-          });
-          
-          if (service) {
-            console.log('Found service in all services:', service);
-            return {
-              success: true,
-              data: service,
-            };
-          }
-        }
-      }
-      
-      console.error(`Service with ID ${id} not found in any category`);
+      console.error(`Service with ID ${id} not found in any service type`);
       return {
         success: false,
         error: `Service with ID ${id} not found`,

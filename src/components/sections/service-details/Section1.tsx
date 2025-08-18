@@ -45,6 +45,32 @@ export default function Section1({ serviceId }: Section1Props) {
         }
     };
 
+    const getDefaultImageByType = (serviceType: string) => {
+        switch (serviceType?.toLowerCase()) {
+            case 'tax':
+                return "/assets/imgs/pages/insurance-consultancy/page-details/img-1.png";
+            case 'other':
+                return "/assets/imgs/pages/insurance-consultancy/page-details/img-2.png";
+            case 'insurance':
+                return "/assets/imgs/pages/insurance-consultancy/page-details/img-3.png";
+            default:
+                return "/assets/imgs/pages/insurance-consultancy/page-details/img-1.png";
+        }
+    };
+
+    const getSecondaryImageByType = (serviceType: string) => {
+        switch (serviceType?.toLowerCase()) {
+            case 'tax':
+                return "/assets/imgs/pages/insurance-consultancy/page-home/home-section-1/img-1.png";
+            case 'other':
+                return "/assets/imgs/pages/insurance-consultancy/page-home/home-section-1/img-2.png";
+            case 'insurance':
+                return "/assets/imgs/pages/insurance-consultancy/page-home/home-section-1/img-3.png";
+            default:
+                return "/assets/imgs/pages/insurance-consultancy/page-home/home-section-1/img-1.png";
+        }
+    };
+
     if (loading) {
         return (
             <section className="insurance-consultancy-blog-details-section-1 py-120 overflow-hidden">
@@ -65,8 +91,8 @@ export default function Section1({ serviceId }: Section1Props) {
                         <div className="alert alert-warning">
                             <h5>Service Not Found</h5>
                             <p>{error || "The requested service could not be found."}</p>
-                            <Link href="/tax" className="btn btn-primary">
-                                Back to Tax Services
+                            <Link href="/" className="btn btn-primary">
+                                Back to Home
                             </Link>
                         </div>
                     </div>
@@ -85,7 +111,7 @@ export default function Section1({ serviceId }: Section1Props) {
                             <div className="border overflow-hidden">
                                 <Image 
                                     className="wow img-custom-anim-top w-100" 
-                                    src={service.image_1 || "/assets/imgs/pages/insurance-consultancy/page-details/img-1.png"} 
+                                    src={service.image_1 || getDefaultImageByType(service.type)} 
                                     alt={service.title}
                                     width={800}
                                     height={400}
@@ -127,7 +153,18 @@ export default function Section1({ serviceId }: Section1Props) {
                                     <div className="mt-5 wow img-custom-anim-top">
                                         <h3>{service.title}</h3>
                                         <p className="mb-3">{service.details_short || 'No short description available.'}</p>
-                                        
+                                        <div className="row g-5 mb-5 mt-5">
+                                            <div className="col-12">
+                                             <Image
+                                             className="w-100 wow img-custom-anim-top" 
+                                             src="/assets/imgs/pages/insurance-consultancy/page-details/img-5.png"
+                                             alt={service.title} 
+                                             width={800}
+                                             height={500}
+                                             style={{ objectFit: 'cover' }}
+                                             />
+                                            </div>
+                                        </div>
                                         <div className="service-details">
                                             <h5>Service Description</h5>
                                             <p>{service.details_long || 'No detailed description available.'}</p>
@@ -136,7 +173,7 @@ export default function Section1({ serviceId }: Section1Props) {
                                                 <div className="col-md-6">
                                                     <div className="border p-4 rounded">
                                                         <h6 className="text-primary-2">Service Category</h6>
-                                                        <p className="mb-0">{service.type || 'General Service'}</p>
+                                                        <p className="mb-0">{service.category.name}</p>
                                                     </div>
                                                 </div>
                                                 <div className="col-md-6">
@@ -181,8 +218,8 @@ export default function Section1({ serviceId }: Section1Props) {
                                             <Link href="/contact" className="btn btn-primary bg-primary-2 me-3">
                                                 Get This Service
                                             </Link>
-                                            <Link href="/tax" className="btn btn-outline-primary">
-                                                Back to Tax Services
+                                            <Link href={`/${service.type}`} className="btn btn-outline-primary">
+                                                Back to {service.type} Services
                                             </Link>
                                         </div>
                                     </div>
@@ -254,7 +291,7 @@ export default function Section1({ serviceId }: Section1Props) {
                                     </span>
                                     <h6 className="fs-6">
                                         Browse Other <br />
-                                        Tax Services
+                                        {service.type} Services
                                     </h6>
                                 </Link>
                                 <Link href="#" className="text-end">
@@ -266,7 +303,7 @@ export default function Section1({ serviceId }: Section1Props) {
                                     </span>
                                     <h6 className="fs-6">
                                         Explore More <br />
-                                        Tax Solutions
+                                        {service.type} Solutions
                                     </h6>
                                 </Link>
                             </div>
