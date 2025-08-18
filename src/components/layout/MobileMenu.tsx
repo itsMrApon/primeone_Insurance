@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
 import { getServicesByType } from "@/util/api";
 import { Service } from "@/types/service";
 
@@ -15,10 +14,16 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
     const [insuranceCategories, setInsuranceCategories] = useState<{[key: string]: Service[]}>({});
     const [taxCategories, setTaxCategories] = useState<{[key: string]: Service[]}>({});
     const [otherCategories, setOtherCategories] = useState<{[key: string]: Service[]}>({});
-    const pathname = usePathname();
 
     const handleAccordion = (key: number) => {
         setIsAccordion((prevState) => (prevState === key ? null : key));
+    };
+
+    const handleLinkClick = () => {
+        // Close mobile menu when navigating to a page
+        if (isMobileMenu) {
+            handleMobileMenu();
+        }
     };
 
     useEffect(() => {
@@ -48,14 +53,6 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
 
         fetchCategories();
     }, []);
-
-    useEffect(() => {
-        // Close mobile menu when pathname changes (but not on initial mount)
-        if (isMobileMenu) {
-            handleMobileMenu();
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pathname]);
     return (
         <>
             {isMobileMenu && <div className="mobile-menu-overlay" onClick={handleMobileMenu} />}
@@ -82,30 +79,30 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                 <nav>
                                     <ul className="mobile-menu ps-0">
                                         <li>
-                                            <Link href="/">Homepages</Link>
+                                            <Link href="/" onClick={handleLinkClick}>Homepages</Link>
                                         </li>
                                         <li>
-                                            <Link href="/about">About Us</Link>
+                                            <Link href="/about" onClick={handleLinkClick}>About Us</Link>
                                         </li>
                                         <li className="has-children">
                                             <span className="menu-expand" onClick={() => handleAccordion(1)}>
                                                 <i className="arrow-small-down" />
                                             </span>
-                                            <Link href="/insurance">Insurance</Link>
+                                            <Link href="/insurance" onClick={handleLinkClick}>Insurance</Link>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
                                                 <li>
-                                                    <Link href="/insurance">All Insurance</Link>
+                                                    <Link href="/insurance" onClick={handleLinkClick}>All Insurance</Link>
                                                 </li>
                                                 {Object.keys(insuranceCategories).map((categoryName, index) => (
                                                     <li key={categoryName} className="has-children">
                                                         <span className="menu-expand" onClick={() => handleAccordion(1000 + index)}>
                                                             <i className="arrow-small-down" />
                                                         </span>
-                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
                                                         <ul className="sub-menu" style={{ display: `${isAccordion == 1000 + index ? "block" : "none"}` }}>
                                                             {insuranceCategories[categoryName]?.map((service) => (
                                                                 <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -117,21 +114,21 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <span className="menu-expand" onClick={() => handleAccordion(2)}>
                                                 <i className="arrow-small-down" />
                                             </span>
-                                            <Link href="/tax">Tax</Link>
+                                            <Link href="/tax" onClick={handleLinkClick}>Tax</Link>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 2 ? "block" : "none"}` }}>
                                                 <li>
-                                                    <Link href="/tax">All Tax Services</Link>
+                                                    <Link href="/tax" onClick={handleLinkClick}>All Tax Services</Link>
                                                 </li>
                                                 {Object.keys(taxCategories).map((categoryName, index) => (
                                                     <li key={categoryName} className="has-children">
                                                         <span className="menu-expand" onClick={() => handleAccordion(2000 + index)}>
                                                             <i className="arrow-small-down" />
                                                         </span>
-                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
                                                         <ul className="sub-menu" style={{ display: `${isAccordion == 2000 + index ? "block" : "none"}` }}>
                                                             {taxCategories[categoryName]?.map((service) => (
                                                                 <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -140,24 +137,24 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             </ul>
                                         </li>
                                         <li className="has-children">
-                                            <Link href="/other">Other</Link>
+                                            <Link href="/other" onClick={handleLinkClick}>Other</Link>
                                             <span className="menu-expand" onClick={() => handleAccordion(3)}>
                                                 <i className="arrow-small-down" />
                                             </span>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 3 ? "block" : "none"}` }}>
                                                 <li>
-                                                    <Link href="/other">All Services</Link>
+                                                    <Link href="/other" onClick={handleLinkClick}>All Services</Link>
                                                 </li>
                                                 {Object.keys(otherCategories).map((categoryName, index) => (
                                                     <li key={categoryName} className="has-children">
                                                         <span className="menu-expand" onClick={() => handleAccordion(3000 + index)}>
                                                             <i className="arrow-small-down" />
                                                         </span>
-                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
                                                         <ul className="sub-menu" style={{ display: `${isAccordion == 3000 + index ? "block" : "none"}` }}>
                                                             {otherCategories[categoryName]?.map((service) => (
                                                                 <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
                                                                 </li>
                                                             ))}
                                                         </ul>
@@ -166,13 +163,13 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             </ul>
                                         </li>
                                         <li>
-                                            <Link href="/contact">Contact</Link>
+                                            <Link href="/contact" onClick={handleLinkClick}>Contact</Link>
                                         </li>
                                         <li>
-                                            <Link href="/signin">SIGN IN</Link>
+                                            <Link href="/signin" onClick={handleLinkClick}>SIGN IN</Link>
                                         </li>
                                         <li>
-                                            <Link href="/signup">SIGN UP</Link>
+                                            <Link href="/signup" onClick={handleLinkClick}>SIGN UP</Link>
                                         </li>
                                     </ul>
                                 </nav>
