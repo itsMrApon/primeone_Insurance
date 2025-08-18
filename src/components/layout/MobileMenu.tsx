@@ -50,10 +50,12 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
     }, []);
 
     useEffect(() => {
+        // Close mobile menu when pathname changes (but not on initial mount)
         if (isMobileMenu) {
             handleMobileMenu();
         }
-    }, [pathname, handleMobileMenu, isMobileMenu]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [pathname]);
     return (
         <>
             {isMobileMenu && <div className="mobile-menu-overlay" onClick={handleMobileMenu} />}
