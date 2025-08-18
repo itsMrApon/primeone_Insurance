@@ -8,7 +8,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="Tax 👩‍💼Case" current_page="tax" />
+                <PageHeader title="Tax   👩‍💼Concentration" current_page="tax" />
                 <Section1 />
                 <Section7 />
                 <Section2 />

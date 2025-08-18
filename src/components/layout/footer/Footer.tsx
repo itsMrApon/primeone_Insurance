@@ -54,7 +54,7 @@ export default function Footer() {
                                             <Link href="https://www.facebook.com/100050273034759/mentions/?_rdrhttps://share.google/c1NKmbY2MjDQlQjEN" className="border border-opacity-10 border-white icon-shape icon-md">
                                                 <i className="bi bi-facebook" />
                                             </Link>
-                                            <Link href="http://youtube.com/@primeoneofficial" className="border border-opacity-10 border-white icon-shape icon-md">
+                                            <Link href="https://www.youtube.com/@dhossain143" className="border border-opacity-10 border-white icon-shape icon-md">
                                                 <i className="bi bi-youtube" />
                                             </Link>
                                             <Link href="agents.farmers.com/ny/woodside/delowar-hossain" className="border border-opacity-10 border-white icon-shape icon-md">

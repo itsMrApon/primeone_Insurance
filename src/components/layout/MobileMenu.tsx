@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { getServicesByType } from "@/util/api";
+import { Service } from "@/types/service";
 
 interface MobileMenuProps {
     isMobileMenu: boolean;
@@ -10,6 +12,9 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMenuProps) {
     const [isAccordion, setIsAccordion] = useState<number | null>(null);
+    const [insuranceCategories, setInsuranceCategories] = useState<{[key: string]: Service[]}>({});
+    const [taxCategories, setTaxCategories] = useState<{[key: string]: Service[]}>({});
+    const [otherCategories, setOtherCategories] = useState<{[key: string]: Service[]}>({});
     const pathname = usePathname();
 
     const handleAccordion = (key: number) => {
@@ -17,10 +22,38 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
     };
 
     useEffect(() => {
+        const fetchCategories = async () => {
+            try {
+                // Fetch Insurance categories
+                const insuranceResponse = await getServicesByType("insurance");
+                if (insuranceResponse.success && insuranceResponse.data?.services_by_category) {
+                    setInsuranceCategories(insuranceResponse.data.services_by_category);
+                }
+
+                // Fetch Tax categories
+                const taxResponse = await getServicesByType("tax");
+                if (taxResponse.success && taxResponse.data?.services_by_category) {
+                    setTaxCategories(taxResponse.data.services_by_category);
+                }
+
+                // Fetch Other categories
+                const otherResponse = await getServicesByType("other");
+                if (otherResponse.success && otherResponse.data?.services_by_category) {
+                    setOtherCategories(otherResponse.data.services_by_category);
+                }
+            } catch (error) {
+                console.error('Error fetching categories:', error);
+            }
+        };
+
+        fetchCategories();
+    }, []);
+
+    useEffect(() => {
         if (isMobileMenu) {
             handleMobileMenu();
         }
-    }, [pathname]);
+    }, [pathname, handleMobileMenu, isMobileMenu]);
     return (
         <>
             {isMobileMenu && <div className="mobile-menu-overlay" onClick={handleMobileMenu} />}
@@ -56,52 +89,78 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                             <span className="menu-expand" onClick={() => handleAccordion(1)}>
                                                 <i className="arrow-small-down" />
                                             </span>
-                                            <Link href="#">Insurance</Link>
+                                            <Link href="/insurance">Insurance</Link>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 1 ? "block" : "none"}` }}>
                                                 <li>
                                                     <Link href="/insurance">All Insurance</Link>
                                                 </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">01. Life Insurance</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">02. Home Insurance</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">03. Car Insurance</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">04. Business Insurance</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">05. Education Insurance</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/portfolio-details">06. Emergency Insurance</Link>
-                                                </li>
+                                                {Object.keys(insuranceCategories).map((categoryName, index) => (
+                                                    <li key={categoryName} className="has-children">
+                                                        <span className="menu-expand" onClick={() => handleAccordion(1000 + index)}>
+                                                            <i className="arrow-small-down" />
+                                                        </span>
+                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 1000 + index ? "block" : "none"}` }}>
+                                                            {insuranceCategories[categoryName]?.map((service) => (
+                                                                <li key={service.id}>
+                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </li>
-                                        <li>
-                                            <Link href="/tax">Tax</Link>
-                                        </li>
                                         <li className="has-children">
-                                            <Link href="#">Other</Link>
                                             <span className="menu-expand" onClick={() => handleAccordion(2)}>
                                                 <i className="arrow-small-down" />
                                             </span>
+                                            <Link href="/tax">Tax</Link>
                                             <ul className="sub-menu" style={{ display: `${isAccordion == 2 ? "block" : "none"}` }}>
+                                                <li>
+                                                    <Link href="/tax">All Tax Services</Link>
+                                                </li>
+                                                {Object.keys(taxCategories).map((categoryName, index) => (
+                                                    <li key={categoryName} className="has-children">
+                                                        <span className="menu-expand" onClick={() => handleAccordion(2000 + index)}>
+                                                            <i className="arrow-small-down" />
+                                                        </span>
+                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 2000 + index ? "block" : "none"}` }}>
+                                                            {taxCategories[categoryName]?.map((service) => (
+                                                                <li key={service.id}>
+                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </li>
+                                        <li className="has-children">
+                                            <Link href="/other">Other</Link>
+                                            <span className="menu-expand" onClick={() => handleAccordion(3)}>
+                                                <i className="arrow-small-down" />
+                                            </span>
+                                            <ul className="sub-menu" style={{ display: `${isAccordion == 3 ? "block" : "none"}` }}>
                                                 <li>
                                                     <Link href="/other">All Services</Link>
                                                 </li>
-                                                <li>
-                                                    <Link href="/blog-details">01.Mortgage</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/blog-details">02. Notary</Link>
-                                                </li>
-                                                <li>
-                                                    <Link href="/blog-details">03. Air Ticket</Link>
-                                                </li>
+                                                {Object.keys(otherCategories).map((categoryName, index) => (
+                                                    <li key={categoryName} className="has-children">
+                                                        <span className="menu-expand" onClick={() => handleAccordion(3000 + index)}>
+                                                            <i className="arrow-small-down" />
+                                                        </span>
+                                                        <Link href="#">{String(index + 1).padStart(2, '0')}. {categoryName}</Link>
+                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 3000 + index ? "block" : "none"}` }}>
+                                                            {otherCategories[categoryName]?.map((service) => (
+                                                                <li key={service.id}>
+                                                                    <Link href={`/service-details/${service.id}`}>{service.title}</Link>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </li>
+                                                ))}
                                             </ul>
                                         </li>
                                         <li>
@@ -125,7 +184,7 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                     <span className="opacity-50">Mail:</span> <Link href="/mailto:dhossain143@yahoo.com">dhossain143@yahoo.com</Link>
                                 </li>
                                 <li>
-                                    <span className="opacity-50">Phone:</span> <Link href="/tel:(917)745-0549">+(917)745-0549</Link>
+                                    <span className="opacity-50">Phone:</span> <Link href="/tel:(917)745-0549">+1(917)745-0549</Link>
                                 </li>
                                 <li>
                                     <span className="opacity-50">Address:</span> <Link href="/https://maps.app.goo.gl/MBxj5gZr5hLE6Ckf8">69-03 Woodside Ave Woodside, <br />
@@ -145,7 +204,7 @@ https://share.google/c1NKmbY2MjDQlQjEN" className="border border-opacity-10 bord
                                 <Link href="agents.farmers.com/ny/woodside/delowar-hossain" className="border border-opacity-10 border-white icon-shape icon-md">
                                     <i className="bi bi-linkedin" />
                                 </Link>
-                                <Link href="http://youtube.com/@primeoneofficial" className="border border-opacity-10 border-white icon-shape icon-md">
+                                <Link href="https://www.youtube.com/@dhossain143" className="border border-opacity-10 border-white icon-shape icon-md">
                                     <i className="bi bi-youtube" />
                                 </Link>
                             </div>

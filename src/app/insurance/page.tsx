@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="Our 👨‍💼Expertise" current_page="Our insurance" />
+                <PageHeader title="Our   👨‍💼Expertise" current_page="Our insurance" />
                 <Section1 />
                 <Section2 />
                 <Section5 />
