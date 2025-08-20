@@ -323,7 +323,7 @@ export default function Section1() {
                     <Image className="wow img-custom-anim-left" src={img1} alt="PrimeOne" />
                 </div>
             </section>
-            <ModalVideo channel="custom" isOpen={isOpen} url="https://www.youtube.com/watch?v=giRprhhW8mU" onClose={() => setIsOpen(false)} />
+            <ModalVideo channel="youtube" isOpen={isOpen} videoId="giRprhhW8mU" onClose={() => setIsOpen(false)} />
         </>
     );
 }
