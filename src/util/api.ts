@@ -1,4 +1,4 @@
-import { ServicesResponse, ApiResponse, Service } from '@/types/service';
+import { ServicesResponse, ApiResponse, Service, ContactFormData, ContactFormResponse } from '@/types/service';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api.keyatra.com/api';
 const USE_PROXY = true; // Re-enable proxy to handle CORS
@@ -166,6 +166,44 @@ class ApiClient {
       };
     }
   }
+
+  async submitContactForm(formData: ContactFormData): Promise<ApiResponse<ContactFormResponse>> {
+    try {
+      console.log('Submitting contact form:', formData);
+      
+      // Use direct API call to contact endpoint
+      const url = '/api/contact';
+      
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        return {
+          success: false,
+          error: errorData.error || `HTTP error! status: ${response.status}`,
+        };
+      }
+
+      const data = await response.json();
+      return {
+        success: true,
+        data,
+      };
+    } catch (error) {
+      console.error('Error submitting contact form:', error);
+      return {
+        success: false,
+        error: error instanceof Error ? error.message : 'An unknown error occurred',
+      };
+    }
+  }
 }
 
 // Export a singleton instance
@@ -175,5 +213,6 @@ const apiClient = new ApiClient();
 export const getServicesByType = (type: string) => apiClient.getServicesByType(type);
 export const getAllServices = () => apiClient.getAllServices();
 export const getServiceById = (id: number) => apiClient.getServiceById(id);
+export const submitContactForm = (formData: ContactFormData) => apiClient.submitContactForm(formData);
 
 export { apiClient };

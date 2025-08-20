@@ -1,8 +1,121 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import img1 from "@/assets/imgs/pages/insurance-consultancy/page-contact/img-4.jpg";
+import { submitContactForm } from "@/util/api";
+import { ContactFormData } from "@/types/service";
 
 export default function Section1() {
+    const [formData, setFormData] = useState<ContactFormData>({
+        name: '',
+        email: '',
+        message: '',
+        terms: false,
+        categories: []
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({ type: null, message: '' });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value, type } = e.target;
+        
+        if (type === 'checkbox') {
+            const checked = (e.target as HTMLInputElement).checked;
+            
+            if (name === 'terms') {
+                setFormData(prev => ({
+                    ...prev,
+                    [name]: checked
+                }));
+            } else if (name === 'category') {
+                // Handle multiple category selection
+                setFormData(prev => {
+                    const currentCategories = prev.categories || [];
+                    if (checked) {
+                        // Add category if not already present
+                        if (!currentCategories.includes(value)) {
+                            return {
+                                ...prev,
+                                categories: [...currentCategories, value]
+                            };
+                        }
+                    } else {
+                        // Remove category
+                        return {
+                            ...prev,
+                            categories: currentCategories.filter(cat => cat !== value)
+                        };
+                    }
+                    return prev;
+                });
+            }
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        // Basic validation
+        if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Please fill in all required fields.'
+            });
+            return;
+        }
+
+        if (!formData.terms) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Please accept the terms and conditions.'
+            });
+            return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            const response = await submitContactForm(formData);
+            
+            // The response has nested success data
+            if (response.success && response.data?.success) {
+                setSubmitStatus({
+                    type: 'success',
+                    message: response.data.message || 'Thank you! Your message has been sent successfully.'
+                });
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    message: '',
+                    terms: false,
+                    categories: []
+                });
+            } else {
+                setSubmitStatus({
+                    type: 'error',
+                    message: response.error || response.data?.message || 'Failed to send message. Please try again.'
+                });
+            }
+        } catch {
+            setSubmitStatus({
+                type: 'error',
+                message: 'An error occurred. Please try again later.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <>
             {/*insurance-consultancy-contact section 1*/}
@@ -56,29 +169,151 @@ export default function Section1() {
                                 <span className="text-uppercase fw-bold fs-8 text-white bg-primary-2 px-2 py-1">Insurance</span>
                                 <h4 className="mt-3 text-anime-style-2">Tell us about your project</h4>
                                 <p className="pb-5 border-bottom border-primary">Let’s Create Something Amazing Together</p>
-                                <form action="#" className="input-group mb-3 mt-4 position-relative wow img-custom-anim-left">
+                                <form onSubmit={handleSubmit} className="input-group mb-3 mt-4 position-relative wow img-custom-anim-left">
+                                    {submitStatus.type && (
+                                        <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-danger'} mb-4`}>
+                                            {submitStatus.message}
+                                        </div>
+                                    )}
                                     <div className="row">
                                         <div className="col-md-6">
                                             <label htmlFor="username" className="fs-7 fw-bold mb-3 text-uppercase">
-                                                Full name
+                                                Full name *
                                             </label>
-                                            <input type="text" className="py-3 form-control rounded-0 username" name="name" placeholder="Enter here" id="username" />
+                                            <input 
+                                                type="text" 
+                                                className="py-3 form-control rounded-0 username" 
+                                                name="name" 
+                                                placeholder="Enter here" 
+                                                id="username"
+                                                value={formData.name}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
                                         </div>
                                         <div className="col-md-6">
                                             <label htmlFor="email" className="fs-7 fw-bold mb-3 text-uppercase">
-                                                Email address
+                                                Email address *
                                             </label>
-                                            <input type="text" className="py-3 form-control rounded-0 email" name="name" placeholder="Enter here" id="email" />
+                                            <input 
+                                                type="email" 
+                                                className="py-3 form-control rounded-0 email" 
+                                                name="email" 
+                                                placeholder="Enter here" 
+                                                id="email"
+                                                value={formData.email}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-12">
+                                            <label className="service-categories-label fs-7 py-3">
+                                                Interested Services
+                                            </label>
+                                            <div className="service-categories ">
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="Personal Insurance"
+                                                    id="personal_insurance"
+                                                    checked={formData.categories.includes('Personal Insurance')}
+                                                    onChange={handleInputChange}
+                                                />
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="Commercial Vehicle Insurance"
+                                                    id="commercial_vehicle_insurance"
+                                                    checked={formData.categories.includes('Commercial Vehicle Insurance')}
+                                                    onChange={handleInputChange}
+                                                    style={{'--color': '#28a745'} as React.CSSProperties}
+                                                />
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="Tax Services"
+                                                    id="tax_services"
+                                                    checked={formData.categories.includes('Tax Services')}
+                                                    onChange={handleInputChange}
+                                                    style={{'--color': '#fd7e14'} as React.CSSProperties}
+                                                />
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="TLC & Transportation Services"
+                                                    id="tlc_transportation_services"
+                                                    checked={formData.categories.includes('TLC & Transportation Services')}
+                                                    onChange={handleInputChange}
+                                                    style={{'--color': '#dc3545'} as React.CSSProperties}
+                                                />
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="DMV Services"
+                                                    id="dmv_services"
+                                                    checked={formData.categories.includes('DMV Services')}
+                                                    onChange={handleInputChange}
+                                                    style={{'--color': '#6f42c1'} as React.CSSProperties}
+                                                />
+                                                <input 
+                                                    type="checkbox" 
+                                                    className="chip grow" 
+                                                    name="category" 
+                                                    value="Professional Services"
+                                                    id="professional_services"
+                                                    checked={formData.categories.includes('Professional Services')}
+                                                    onChange={handleInputChange}
+                                                    style={{'--color': '#20c997'} as React.CSSProperties}
+                                                />
+                                            </div>
                                         </div>
                                         <div className="col-12 mt-5">
                                             <label htmlFor="message" className="fs-7 fw-bold mb-3 text-uppercase">
-                                                Message
+                                                Message *
                                             </label>
-                                            <textarea name="message" id="message" cols={30} rows={8} className="py-3 form-control rounded-0 website" placeholder="Enter here" defaultValue={""} />
+                                            <textarea 
+                                                name="message" 
+                                                id="message" 
+                                                cols={30} 
+                                                rows={8} 
+                                                className="py-3 form-control rounded-0 website" 
+                                                placeholder="Enter here"
+                                                value={formData.message}
+                                                onChange={handleInputChange}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="col-12 mt-3">
+                                            <div className="form-check">
+                                                <input 
+                                                    className="form-check-input" 
+                                                    type="checkbox" 
+                                                    name="terms"
+                                                    id="terms"
+                                                    checked={formData.terms}
+                                                    onChange={handleInputChange}
+                                                    required
+                                                />
+                                                <label className="form-check-label" htmlFor="terms">
+                                                    I agree to the Terms and Conditions *
+                                                </label>
+                                            </div>
                                         </div>
                                         <div className="col-12 mt-5">
-                                            <button aria-label="submit" className="btn btn-primary" type="submit" data-aos="fade-zoom-in" data-aos-delay={100}>
-                                                <span>submit</span>
+                                            <button 
+                                                aria-label="submit" 
+                                                className="btn btn-primary" 
+                                                type="submit" 
+                                                data-aos="fade-zoom-in" 
+                                                data-aos-delay={100}
+                                                disabled={isSubmitting}
+                                            >
+                                                <span>{isSubmitting ? 'Submitting...' : 'Submit'}</span>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width={16} height={16} viewBox="0 0 16 16" fill="none">
                                                     <g clipPath="url(#clip0_886_362)">
                                                         <path d="M15.8167 7.55759C15.8165 7.5574 15.8163 7.55719 15.8161 7.557L12.5504 4.307C12.3057 4.06353 11.91 4.06444 11.6665 4.30912C11.423 4.55378 11.4239 4.9495 11.6686 5.193L13.8612 7.375H0.625C0.279813 7.375 0 7.65481 0 8C0 8.34519 0.279813 8.625 0.625 8.625H13.8612L11.6686 10.807C11.4239 11.0505 11.423 11.4462 11.6665 11.6909C11.91 11.9356 12.3058 11.9364 12.5504 11.693L15.8162 8.443C15.8163 8.44281 15.8165 8.44259 15.8167 8.4424C16.0615 8.19809 16.0607 7.80109 15.8167 7.55759Z" fill="white" />

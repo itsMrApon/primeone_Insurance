@@ -5,9 +5,129 @@ import "react-modal-video/css/modal-video.css";
 import Link from "next/link";
 import Image from "next/image";
 import img1 from "@/assets/imgs/pages/insurance-consultancy/page-home/home-section-1/img-1.png";
+import { submitContactForm } from "@/util/api";
+import { ContactFormData } from "@/types/service";
 
 export default function Section1() {
     const [isOpen, setIsOpen] = useState(false);
+    const [formData, setFormData] = useState<ContactFormData>({
+        name: '',
+        email: '',
+        message: '',
+        terms: false,
+        categories: []
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<{
+        type: 'success' | 'error' | null;
+        message: string;
+    }>({ type: null, message: '' });
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { name, value, type } = e.target;
+        
+        if (type === 'checkbox') {
+            const checked = (e.target as HTMLInputElement).checked;
+            
+            if (name === 'terms') {
+                setFormData(prev => ({
+                    ...prev,
+                    [name]: checked
+                }));
+            } else if (name === 'category') {
+                // Handle multiple category selection
+                setFormData(prev => {
+                    const currentCategories = prev.categories || [];
+                    if (checked) {
+                        // Add category if not already present
+                        if (!currentCategories.includes(value)) {
+                            return {
+                                ...prev,
+                                categories: [...currentCategories, value]
+                            };
+                        }
+                    } else {
+                        // Remove category
+                        return {
+                            ...prev,
+                            categories: currentCategories.filter(cat => cat !== value)
+                        };
+                    }
+                    return prev;
+                });
+            }
+        } else {
+            setFormData(prev => ({
+                ...prev,
+                [name]: value
+            }));
+        }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        
+        // Basic validation - only name and email required for quick quote
+        if (!formData.name.trim() || !formData.email.trim()) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Please fill in your name and email.'
+            });
+            return;
+        }
+
+        if (!formData.terms) {
+            setSubmitStatus({
+                type: 'error',
+                message: 'Please accept the terms and conditions.'
+            });
+            return;
+        }
+
+        setIsSubmitting(true);
+        setSubmitStatus({ type: null, message: '' });
+
+        try {
+            // Create form data with default message for quick quote
+            const submitData: ContactFormData = {
+                name: formData.name,
+                email: formData.email,
+                message: formData.message || 'Quick quote request from home page',
+                categories: formData.categories, // Keep original array format
+                terms: formData.terms
+            };
+            
+            const response = await submitContactForm(submitData);
+            
+            // The response has nested success data
+            if (response.success && response.data?.success) {
+                setSubmitStatus({
+                    type: 'success',
+                    message: response.data.message || 'Thank you! Your message has been sent successfully.'
+                });
+                // Reset form
+                setFormData({
+                    name: '',
+                    email: '',
+                    message: '',
+                    terms: false,
+                    categories: []
+                });
+            } else {
+                setSubmitStatus({
+                    type: 'error',
+                    message: response.error || response.data?.message || 'Failed to send message. Please try again.'
+                });
+            }
+        } catch {
+            setSubmitStatus({
+                type: 'error',
+                message: 'An error occurred. Please try again later.'
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <>
             {/*insurance-consultancy-home section 1*/}
@@ -50,23 +170,37 @@ export default function Section1() {
                             </div>
                             <div className="col-lg-5 col-md-10 position-relative pt-lg-0 pt-8">
                                 <div className="form-request bg-white border-top border-primary border-4 position-relative z-1 px-lg-6 px-md-4 px-3 py-7" data-aos="fade-up">
-                                    <form action="#" className="input-group position-relative">
+                                    <form onSubmit={handleSubmit} action="#" className="input-group position-relative">
+                                        {submitStatus.type && (
+                                        <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-danger'} mb-4`}>
+                                            {submitStatus.message}
+                                        </div>)
+                                        }
                                         <div className="row g-3">
                                             <h5 className="mb-3 text-primary-2">Get a free quote</h5>
+                                            
                                             <div className="col-md-6">
                                                 <div className="bg-secondary-2 py-2">
                                                     <label htmlFor="username" className="text-sm-medium text-primary-2 ms-2">
                                                         your name
                                                     </label>
-                                                    <input type="text" className="form-control border-0 bg-secondary-2 py-0" name="name" placeholder="Enter here" />
+                                                    <input type="text" className="form-control border-0 bg-secondary-2 py-0" name="name" placeholder="Enter here" 
+                                                    id="username"
+                                                    value={formData.name}
+                                                    onChange={handleInputChange}
+                                                    required/>
                                                 </div>
                                             </div>
                                             <div className="col-md-6">
                                                 <div className="bg-secondary-2 py-2">
-                                                    <label htmlFor="email" className="text-sm-medium text-primary-2 ms-2">
+                                                    <label htmlFor="email" className="text-sm-medium text-primary-2 ms-2" >
                                                         your email
                                                     </label>
-                                                    <input type="text" className="form-control border-0 bg-secondary-2 py-0" name="name" placeholder="Enter here" />
+                                                    <input type="text" className="form-control border-0 bg-secondary-2 py-0" name="email" placeholder="Enter here" 
+                                                    id="email"
+                                                    value={formData.email}
+                                                    onChange={handleInputChange}
+                                                    required/>
                                                 </div>
                                             </div>
                                             <div className="col-12">
@@ -76,47 +210,89 @@ export default function Section1() {
                                                         category
                                                     </span>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="favorite" name="options-outlined" id="favorite" />
-                                                        <label className="favorite icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="favorite">
+                                                        <input 
+                                                        type="checkbox" 
+                                                        className="favorite" name="category" 
+                                                        value="Personal Insurance"
+                                                        id="personal_insurance"
+                                                        checked={formData.categories.includes('Personal Insurance')}
+                                                        onChange={handleInputChange}
+                                                        />
+                                                        <label className="favorite icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="personal_insurance">
                                                             <i className="fa-solid fa-heart text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="car" name="options-outlined" id="car" />
-                                                        <label className="car icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="car">
+                                                        <input type="checkbox" className="car" name="category" 
+                                                        value="Commercial Vehicle Insurance"
+                                                        id="commercial_vehicle_insurance"
+                                                        checked={formData.categories.includes('Commercial Vehicle Insurance')}
+                                                        onChange={handleInputChange}
+                                                        style={{'--color': '#28a745'} as React.CSSProperties}
+                                                        />
+                                                        <label className="car icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="commercial_vehicle_insurance">
                                                             <i className="fa-solid fa-car text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="tax" name="options-outlined" id="tax" />
-                                                        <label className="tax icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="tax">
+                                                        <input type="checkbox" className="tax" 
+                                                        name="category" 
+                                                        value="Tax Services"
+                                                        id="tax_services"
+                                                        checked={formData.categories.includes('Tax Services')}
+                                                        onChange={handleInputChange}
+                                                        style={{'--color': '#fd7e14'} as React.CSSProperties} 
+                                                        />
+                                                        <label className="tax icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="tax_services">
                                                             <i className="fa-solid fa-calculator text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="mortgage" name="options-outlined" id="mortgage" />
-                                                        <label className="mortgage icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="mortgage">
-                                                            <i className="fa-solid fa-house text-primary-2 fs-20" />
+                                                        <input type="checkbox" className="briefcase" name="category" 
+                                                        value="TLC & Transportation Services"
+                                                        id="tlc_transportation_services"
+                                                        checked={formData.categories.includes('TLC & Transportation Services')}
+                                                        onChange={handleInputChange}
+                                                        style={{'--color': '#dc3545'} as React.CSSProperties} />
+                                                        <label className="briefcase icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="tlc_transportation_services">
+                                                            <i className="fa-solid fa-briefcase text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="laptop" name="options-outlined" id="laptop" />
-                                                        <label className="laptop icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="laptop">
+                                                        <input type="checkbox" className="laptop" name="category" 
+                                                        value="DMV Services"
+                                                        id="dmv_services"
+                                                        checked={formData.categories.includes('DMV Services')}
+                                                        onChange={handleInputChange}
+                                                        style={{'--color': '#6f42c1'} as React.CSSProperties} />
+                                                        <label className="laptop icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="dmv_services">
                                                             <i className="fa-solid fa-laptop-medical text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                     <div className="form-element">
-                                                        <input type="checkbox" className="briefcase" name="options-outlined" id="briefcase" />
-                                                        <label className="briefcase icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="briefcase">
-                                                            <i className="fa-solid fa-briefcase text-primary-2 fs-20" />
+                                                        <input type="checkbox" className="mortgage" name="category" 
+                                                        value="Professional Services"
+                                                        id="professional_services"
+                                                        checked={formData.categories.includes('Professional Services')}
+                                                        onChange={handleInputChange}
+                                                        style={{'--color': '#20c997'} as React.CSSProperties} />
+                                                        <label className="mortgage icon-shape icon-60 rounded-circle bg-secondary-2" htmlFor="professional_services">
+                                                            <i className="fa-solid fa-house text-primary-2 fs-20" />
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div className="col-12 ">
                                                 <div className="d-flex align-items-start gap-2">
-                                                    <input type="checkbox" className="form-check-input" name="checkbox" id="checkbox" />
-                                                    <label htmlFor="checkbox" className="fs-6 text-secondary ms-2">
+                                                    <input type="checkbox" className="form-check-input" name="terms" 
+                                                    id="terms"
+                                                    checked={formData.terms}
+                                                    onChange={handleInputChange}
+                                                    required 
+                                                    />
+                                                    <label htmlFor="terms" className="fs-6 text-secondary ms-2"
+                                                    
+                                                    >
                                                         I agree
                                                         <Link href="#" className="text-primary-2 fw-bold">
                                                             Terms of service
@@ -131,8 +307,9 @@ export default function Section1() {
                                                 </div>
                                             </div>
                                             <div className="col-12">
-                                                <button aria-label="get a quote" className="btn btn-primary bg-primary-2 rounded-0 w-100 mt-4" type="submit" data-aos="fade-zoom-in" data-aos-delay={100}>
-                                                    <span>get a quote</span>
+                                                <button aria-label="get a quote" className="btn btn-primary bg-primary-2 rounded-0 w-100 mt-4"
+                                                 type="submit"  data-aos="fade-zoom-in" data-aos-delay={100} disabled={isSubmitting}>
+                                                    <span>{isSubmitting ? 'getting quote...' : 'get a quote'}</span>
                                                 </button>
                                             </div>
                                         </div>
@@ -146,7 +323,7 @@ export default function Section1() {
                     <Image className="wow img-custom-anim-left" src={img1} alt="PrimeOne" />
                 </div>
             </section>
-            <ModalVideo channel="custom" isOpen={isOpen} url="https://www.facebook.com/reel/580787871654419" onClose={() => setIsOpen(false)} />
+            <ModalVideo channel="custom" isOpen={isOpen} url="https://www.youtube.com/watch?v=giRprhhW8mU" onClose={() => setIsOpen(false)} />
         </>
     );
 }

@@ -43,3 +43,16 @@ export interface ApiResponse<T> {
   message?: string;
   error?: string;
 }
+
+export interface ContactFormData {
+  name: string;
+  email: string;
+  message: string;
+  terms: boolean;
+  categories: string[];
+}
+
+export interface ContactFormResponse {
+  success: boolean;
+  message: string;
+}
