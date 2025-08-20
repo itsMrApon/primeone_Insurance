@@ -9,7 +9,7 @@ export default function Home() {
     return (
         <>
             <Layout>
-                <PageHeader title="About 🗃️Company" current_page="About Us" />
+                <PageHeader title="About Company" current_page="About Us" />
                 <Section1 />
                 <Section2 />
                 <Section3 />

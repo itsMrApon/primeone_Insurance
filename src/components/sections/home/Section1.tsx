@@ -138,9 +138,9 @@ export default function Section1() {
                         <div className="row">
                             <div className="col-lg-7 col-md-12">
                                 <h1 className="mt-3 mb-0 mb-7 ds-1 text-opacity-25 text-white text-anime-style-2">
-                                    Insurance<br className="d-block" />
-                                    & Tax<br className="d-block" />
-                                    <span className="text-white text-opacity-100">Solutions</span>
+                                    Delowar<br className="d-block" />
+                                    Insuranc<br className="d-block" />
+                                    <span className="text-white text-opacity-100">Agency</span>
                                 </h1>
                                 <div className="d-flex align-items-center gap-5">
                                     <Link href="/contact" className="btn btn-primary bg-primary" data-aos="fade-up" data-aos-delay={200}>
