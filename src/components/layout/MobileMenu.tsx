@@ -93,19 +93,16 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                                 <li>
                                                     <Link href="/insurance" onClick={handleLinkClick}>All Insurance</Link>
                                                 </li>
-                                                {Object.keys(insuranceCategories).map((categoryName, index) => (
-                                                    <li key={categoryName} className="has-children">
-                                                        <span className="menu-expand" onClick={() => handleAccordion(1000 + index)}>
-                                                            <i className="arrow-small-down" />
-                                                        </span>
-                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
-                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 1000 + index ? "block" : "none"}` }}>
-                                                            {insuranceCategories[categoryName]?.map((service) => (
-                                                                <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                {Object.keys(insuranceCategories).map((categoryName) => (
+                                                    <li key={categoryName}>
+                                                        <span className="dropdown-item text-capitalize fw-bold">{categoryName}</span>
+                                                        {insuranceCategories[categoryName]?.map((service) => (
+                                                            <div key={service.id} className="ms-3">
+                                                                <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} onClick={handleLinkClick} className="dropdown-item small">
+                                                                    {service.title}
+                                                                </Link>
+                                                            </div>
+                                                        ))}
                                                     </li>
                                                 ))}
                                             </ul>
@@ -119,19 +116,16 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                                 <li>
                                                     <Link href="/tax" onClick={handleLinkClick}>All Tax Services</Link>
                                                 </li>
-                                                {Object.keys(taxCategories).map((categoryName, index) => (
-                                                    <li key={categoryName} className="has-children">
-                                                        <span className="menu-expand" onClick={() => handleAccordion(2000 + index)}>
-                                                            <i className="arrow-small-down" />
-                                                        </span>
-                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
-                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 2000 + index ? "block" : "none"}` }}>
-                                                            {taxCategories[categoryName]?.map((service) => (
-                                                                <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                {Object.keys(taxCategories).map((categoryName) => (
+                                                    <li key={categoryName}>
+                                                        <span className="dropdown-item text-capitalize fw-bold">{categoryName}</span>
+                                                        {taxCategories[categoryName]?.map((service) => (
+                                                            <div key={service.id} className="ms-3">
+                                                                <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} onClick={handleLinkClick} className="dropdown-item small">
+                                                                    {service.title}
+                                                                </Link>
+                                                            </div>
+                                                        ))}
                                                     </li>
                                                 ))}
                                             </ul>
@@ -145,19 +139,16 @@ export default function MobileMenu({ isMobileMenu, handleMobileMenu }: MobileMen
                                                 <li>
                                                     <Link href="/other" onClick={handleLinkClick}>All Services</Link>
                                                 </li>
-                                                {Object.keys(otherCategories).map((categoryName, index) => (
-                                                    <li key={categoryName} className="has-children">
-                                                        <span className="menu-expand" onClick={() => handleAccordion(3000 + index)}>
-                                                            <i className="arrow-small-down" />
-                                                        </span>
-                                                        <span className="dropdown-item text-capitalize">{String(index + 1).padStart(2, '0')}. {categoryName}</span>
-                                                        <ul className="sub-menu" style={{ display: `${isAccordion == 3000 + index ? "block" : "none"}` }}>
-                                                            {otherCategories[categoryName]?.map((service) => (
-                                                                <li key={service.id}>
-                                                                    <Link href={`/service-details/${service.id}`} onClick={handleLinkClick}>{service.title}</Link>
-                                                                </li>
-                                                            ))}
-                                                        </ul>
+                                                {Object.keys(otherCategories).map((categoryName) => (
+                                                    <li key={categoryName}>
+                                                        <span className="dropdown-item text-capitalize fw-bold">{categoryName}</span>
+                                                        {otherCategories[categoryName]?.map((service) => (
+                                                            <div key={service.id} className="ms-3">
+                                                                <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} onClick={handleLinkClick} className="dropdown-item small">
+                                                                    {service.title}
+                                                                </Link>
+                                                            </div>
+                                                        ))}
                                                     </li>
                                                 ))}
                                             </ul>

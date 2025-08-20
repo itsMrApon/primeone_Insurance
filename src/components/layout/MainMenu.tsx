@@ -56,7 +56,7 @@ export default function MainMenu() {
                 </ul>
             </li>
             <li className="nav-item dropdown menu-item-has-children">
-                <Link className="nav-link" href="/insurance" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Link className="nav-link" href="/insurance">
                     Insurance
                 </Link>
                 <ul className="dropdown-menu">
@@ -65,15 +65,15 @@ export default function MainMenu() {
                             All Insurance
                         </Link>
                     </li>
-                    {Object.keys(insuranceCategories).map((categoryName, index) => (
+                    {Object.keys(insuranceCategories).map((categoryName) => (
                         <li key={categoryName} className="dropdown submenu menu-item-has-children">
                             <Link className="dropdown-item text-capitalize" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {String(index + 1).padStart(2, '0')}. {categoryName}
+                                {categoryName}
                             </Link>
                             <ul className="dropdown-menu">
                                 {insuranceCategories[categoryName]?.map((service) => (
                                     <li key={service.id}>
-                                        <Link className="dropdown-item" href={`/service-details/${service.id}`}>
+                                        <Link className="dropdown-item" href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}>
                                             {service.title}
                                         </Link>
                                     </li>
@@ -84,7 +84,7 @@ export default function MainMenu() {
                 </ul>
             </li>
             <li className="nav-item dropdown menu-item-has-children">
-                <Link className="nav-link" href="/tax" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Link className="nav-link" href="/tax">
                     Tax
                 </Link>
                 <ul className="dropdown-menu">
@@ -93,15 +93,15 @@ export default function MainMenu() {
                             All Tax Services
                         </Link>
                     </li>
-                    {Object.keys(taxCategories).map((categoryName, index) => (
+                    {Object.keys(taxCategories).map((categoryName) => (
                         <li key={categoryName} className="dropdown submenu menu-item-has-children">
                             <Link className="dropdown-item text-capitalize" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {String(index + 1).padStart(2, '0')}. {categoryName}
+                                {categoryName}
                             </Link>
                             <ul className="dropdown-menu">
                                 {taxCategories[categoryName]?.map((service) => (
                                     <li key={service.id}>
-                                        <Link className="dropdown-item" href={`/service-details/${service.id}`}>
+                                        <Link className="dropdown-item" href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}>
                                             {service.title}
                                         </Link>
                                     </li>
@@ -112,7 +112,7 @@ export default function MainMenu() {
                 </ul>
             </li>
             <li className="nav-item dropdown menu-item-has-children">
-                <Link className="nav-link" href="/other" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <Link className="nav-link" href="/other">
                     Other
                 </Link>
                 <ul className="dropdown-menu">
@@ -121,15 +121,15 @@ export default function MainMenu() {
                             All services
                         </Link>
                     </li>
-                    {Object.keys(otherCategories).map((categoryName, index) => (
+                    {Object.keys(otherCategories).map((categoryName) => (
                         <li key={categoryName} className="dropdown submenu menu-item-has-children">
                             <Link className="dropdown-item text-capitalize" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                {String(index + 1).padStart(2, '0')}. {categoryName}
+                                {categoryName}
                             </Link>
                             <ul className="dropdown-menu ">
                                 {otherCategories[categoryName]?.map((service) => (
                                     <li key={service.id}>
-                                        <Link className="dropdown-item text-capitalize" href={`/service-details/${service.id}`}>
+                                        <Link className="dropdown-item text-capitalize" href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}>
                                             {service.title}
                                         </Link>
                                     </li>
