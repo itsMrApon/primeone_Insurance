@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { getServicesByType } from "@/util/api";
 import { Service } from "@/types/service";
+import '@/assets/css/FilterButton.css';
 
 export default function Section1() {
     const [services, setServices] = useState<Service[]>([]);
@@ -148,23 +149,25 @@ export default function Section1() {
                     )}
                     <div className="text-center mb-3">
                         <div className="button-group filter-button-group filter-menu-active">
-                            <button 
-                                aria-label="All" 
-                                className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === "*" ? "active" : ""}`} 
-                                onClick={() => handleFilter("*")}
-                            >
-                                all Services
-                            </button>
                             {categories.map((category, index) => (
                                 <button 
                                     key={index}
                                     aria-label={category} 
-                                    className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === category ? "active" : ""}`} 
+                                    className={`filter-btn ${activeFilter === category ? "active" : ""}`} 
                                     onClick={() => handleFilter(category, category)}
+                                    data-text={category}
                                 >
                                     {category}
                                 </button>
                             ))}
+                            <button 
+                                aria-label="All" 
+                                className={`filter-btn ${activeFilter === "*" ? "active" : ""}`} 
+                                onClick={() => handleFilter("*")}
+                                data-text="all Services"
+                            >
+                                all Services
+                            </button>
                         </div>
                     </div>
                     <div className="row g-5">

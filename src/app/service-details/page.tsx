@@ -3,7 +3,6 @@ import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import Layout from "@/components/layout/Layout";
 import Section1 from "@/components/sections/service-details/Section1";
-import Section2 from "@/components/sections/contact/Section1";
 import PageHeader from "@/components/sections/PageHeader";
 
 function ServiceDetailsContent() {
@@ -18,7 +17,6 @@ function ServiceDetailsContent() {
                 current_page={serviceTitle} 
             />
             <Section1 serviceId={serviceId} />
-            <Section2 />
         </Layout>
     );
 }

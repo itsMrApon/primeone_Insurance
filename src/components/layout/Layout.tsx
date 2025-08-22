@@ -5,9 +5,6 @@ import { useOffcanvasMenu } from '@/util/offcanvasMenu'
 import { useAccordion } from '@/util/useAccordion'
 import { useCircleText } from '@/util/useCircleText'
 import { useOdometerCounter } from '@/util/useOdometerCounter'
-import { useParallaxEffect } from '@/util/useParallaxEffect'
-import useTextAnimation2 from '@/util/useTextAnimation2'
-import useTextAnimation3 from '@/util/useTextAnimation3'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 import dynamic from 'next/dynamic'
@@ -68,13 +65,10 @@ export default function Layout({ headerStyle, footerStyle, breadcrumbTitle, chil
 	}, [scroll])
 
 	DataBg()
-	useTextAnimation2()
-	useTextAnimation3()
 	useOffcanvasMenu()
 	useAccordion()
 	useCircleText()
 	useOdometerCounter()
-	useParallaxEffect()
 	return (
 		<>
 			<div id="top" />

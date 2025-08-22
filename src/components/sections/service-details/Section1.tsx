@@ -4,6 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { getServiceById } from "@/util/api";
 import { Service } from "@/types/service";
+import PriceCard from "./PriceCard";
+import QuoteCard from "./QuoteCard";
+import PdfCard from "./PdfCard";
+import LongCard from "./LongCard";
 
 interface Section1Props {
     serviceId: string | null;
@@ -94,7 +98,7 @@ export default function Section1({ serviceId }: Section1Props) {
             <section className="insurance-consultancy-blog-details-section-1 py-120 overflow-hidden">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-12 mx-auto">
+                        <div className="col-lg-8">
                             <div className="border overflow-hidden">
                                 <Image 
                                     className="wow img-custom-anim-top w-100" 
@@ -237,6 +241,18 @@ export default function Section1({ serviceId }: Section1Props) {
                                         {service.type} Solutions
                                     </h6>
                                 </Link>
+                            </div>
+                        </div>
+                        
+                        {/* Cards Sidebar */}
+                        <div className="col-lg-4">
+                            <div className="sticky-top" style={{ top: '100px' }}>
+                                <div className="d-flex flex-column align-items-center gap-4">
+                                    <PriceCard service={service} />
+                                    <QuoteCard service={service} />
+                                    <PdfCard service={service} />
+                                    <LongCard service={service} />
+                                </div>
                             </div>
                         </div>
                     </div>

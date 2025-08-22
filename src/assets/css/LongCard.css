@@ -1,0 +1,139 @@
+/* From Uiverse.io by Bastiennnn */
+.long-card {
+  width: 350px;
+  height: 500px;
+  margin: 0 auto;
+  background-color: #24233b;
+  border-radius: 8px;
+  z-index: 1;
+  box-shadow: 0px 10px 10px rgb(73, 70, 92);
+  transition: 0.5s;
+}
+
+.long-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0px 10px 10px black;
+}
+
+.long-card-top {
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.long-card-circle {
+  padding: 0 4px;
+}
+
+.long-card-circle2 {
+  display: inline-block;
+  align-items: center;
+  width: 10px;
+  height: 10px;
+  padding: 1px;
+  border-radius: 5px;
+}
+
+.long-card-red {
+  background-color: #ff605c;
+}
+
+.long-card-yellow {
+  background-color: #ffbd44;
+}
+
+.long-card-green {
+  background-color: #00ca4e;
+}
+
+.long-card-header {
+  margin: 5px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+
+.long-card-title {
+  color: white;
+  padding-left: 50px;
+  font-size: 15px;
+  margin: 0;
+}
+
+.long-card-code-container {
+  text-align: center;
+  padding: 10px;
+}
+
+.long-card-code {
+  width: 320px;
+  height: 420px;
+  resize: none;
+  background-color: rgb(73, 70, 92);
+  border-radius: 5px;
+  border: none;
+  color: white;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  overflow-y: auto;
+}
+
+.long-card-code:focus {
+  outline: none !important;
+}
+
+/* Service-specific styling */
+.long-card-service-info {
+  color: #00ca4e;
+  font-weight: bold;
+}
+
+.long-card-service-description {
+  color: #ffbd44;
+  margin: 10px 0;
+}
+
+.long-card-service-details {
+  color: #ff605c;
+}
+
+.long-card-service-features {
+  color: #87ceeb;
+  margin: 8px 0;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .long-card {
+    width: 100%;
+    max-width: 350px;
+    height: 450px;
+  }
+  
+  .long-card-code {
+    width: 90%;
+    height: 370px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .long-card {
+    width: 100%;
+    max-width: 320px;
+    height: 400px;
+  }
+  
+  .long-card-code {
+    width: 90%;
+    height: 320px;
+    font-size: 10px;
+    padding: 10px;
+  }
+  
+  .long-card-title {
+    font-size: 13px;
+    padding-left: 30px;
+  }
+}

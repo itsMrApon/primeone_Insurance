@@ -1,9 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { getServicesByType } from "@/util/api";
 import { Service } from "@/types/service";
+import '@/assets/css/OtherCard.css';
+import '@/assets/css/FilterButton.css';
 
 export default function Section1() {
     const [services, setServices] = useState<Service[]>([]);
@@ -77,8 +78,6 @@ export default function Section1() {
         }
     };
 
-    const getDefaultImage = () => "/assets/imgs/pages/insurance-consultancy/page-details/img-2.png";
-
     if (loading) {
         return (
             <section className="insurance-consultancy-portfolio-section-1 py-120 overflow-hidden">
@@ -126,63 +125,43 @@ export default function Section1() {
                     )}
                     <div className="text-center mb-3">
                         <div className="button-group filter-button-group filter-menu-active">
-                            <button 
-                                aria-label="All" 
-                                className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === "*" ? "active" : ""}`} 
-                                onClick={() => handleFilter("*")}
-                            >
-                                all Services
-                            </button>
                             {categories.map((category, index) => (
                                 <button 
                                     key={index}
                                     aria-label={category} 
-                                    className={`btn btn-md btn-filter mb-2 me-2 ${activeFilter === category ? "active" : ""}`} 
+                                    className={`filter-btn ${activeFilter === category ? "active" : ""}`} 
                                     onClick={() => handleFilter(category, category)}
+                                    data-text={category}
                                 >
                                     {category}
                                 </button>
                             ))}
+                            <button 
+                                aria-label="All" 
+                                className={`filter-btn ${activeFilter === "*" ? "active" : ""}`} 
+                                onClick={() => handleFilter("*")}
+                                data-text="all Services"
+                            >
+                                all Services
+                            </button>
                         </div>
                     </div>
                     <div className="row g-5">
-                        {filteredServices.map((service) => (
-                            <div className="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay={service.title} key={service.id}>
-                                <div className="card-news card h-100 position-relative hover-up">
-                                    <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} className="card-news-img position-relative d-block">
-                                        <Image
-                                            className="w-100"
-                                            src={service.image_1 || getDefaultImage()}
-                                            alt={service.title}
-                                            width={600}
-                                            height={400}
-                                            style={{ objectFit: 'cover' }}
-                                        />
-                                        <span className="text-uppercase fw-bold fs-8 text-white bg-primary-2 px-2 py-1 position-absolute top-100 end-0 translate-middle-y me-5">{service.type}</span>
+                        {filteredServices.map((service, index) => (
+                            <div className="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay={index * 100} key={service.id}>
+                                <section className="other-container">
+                                    <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}>
+                                        <div className="other-card">
+                                            <div className="other-content">
+                                                <p className="other-logo">{service.title}</p>
+                                                <div className="other-h6">{service.category?.name || 'Professional Service'}</div>
+                                                <div className="other-hover-content">
+                                                    <p>{service.description || 'Professional service tailored to meet your specific business needs and requirements.'}</p>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </Link>
-                                    <div className="card-news-body p-4 d-flex flex-column justify-content-between h-100">
-                                        <div className="d-flex card-news-information gap-4">
-                                            <div className="d-flex align-items-center gap-1">
-                                                <i className="fa-solid fa-calendar-days text-primary"></i>
-                                                <p className="mb-0">{new Date(service.created_at).toLocaleDateString()}</p>
-                                            </div>
-                                            <div className="d-flex align-items-center gap-1">
-                                                <i className="fa-regular fa-location text-primary"></i>
-                                                <span className="opacity-50">Service No. {service.id}</span>
-                                                <Link href={`/about`} className="mb-0 text-primary-2">
-                                                </Link>
-                                            </div>
-                                        </div>
-                                        <div className="card-news-title mt-2 mb-4">
-                                            <h6 className="fw-semibold text-primary-2">
-                                                <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`}> {service.title} </Link>
-                                            </h6>
-                                        </div>
-                                        <Link href={`/service-details?id=${service.id}&title=${encodeURIComponent(service.title)}`} className="text-dark opacity-50 fs-7 fw-semibold">
-                                            Read More
-                                        </Link>
-                                    </div>
-                                </div>
+                                </section>
                             </div>
                         ))}
                     </div>
