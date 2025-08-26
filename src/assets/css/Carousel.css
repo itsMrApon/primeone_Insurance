@@ -1,0 +1,295 @@
+/* Hero Carousel Styles with unique class names */
+.hero-carousel-wrapper {
+  height: 100vh;
+  width: 100vw;
+  max-width: none;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+}
+
+/* Dark theme wrapper adjustments */
+html.dark .hero-carousel-wrapper {
+  box-shadow: none; /* Remove box shadow in dark mode too */
+}
+
+.hero-main {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-shadow: none; /* Remove box shadow */
+}
+
+.hero-slider {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-item {
+  width: 200px;
+  height: 300px;
+  list-style-type: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  box-shadow: 0 20px 30px rgba(255, 255, 255, 0.3) inset;
+  transition: transform 0.1s, left 0.75s, top 0.75s, width 0.75s, height 0.75s;
+  /* Temporary debugging - add a visible border */
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.hero-item:nth-child(1),
+.hero-item:nth-child(2) {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: none;
+  border-radius: 15px; /* Match wrapper border radius */
+  box-shadow: none;
+  opacity: 1;
+}
+
+.hero-item:nth-child(3) {
+  left: 50%;
+}
+
+.hero-item:nth-child(4) {
+  left: calc(50% + 220px);
+}
+
+.hero-item:nth-child(5) {
+  left: calc(50% + 440px);
+}
+
+.hero-item:nth-child(6) {
+  left: calc(50% + 660px);
+  opacity: 0;
+}
+
+.hero-content {
+  width: min(30vw, 400px);
+  position: absolute;
+  top: 50%;
+  left: 3rem;
+  transform: translateY(-50%);
+  font: 400 0.85rem helvetica, sans-serif;
+  color: white;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  display: none;
+  z-index: 10; /* Ensure content is above background */
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Light theme (default) */
+.hero-content .hero-title {
+  font-family: 'arial-black';
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  color: white;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.hero-content .hero-description {
+  line-height: 1.7;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+/* Dark theme adjustments */
+html.dark .hero-content .hero-title {
+  color: #f0f0f0;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.9);
+}
+
+html.dark .hero-content .hero-description {
+  color: rgba(240, 240, 240, 0.85);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.8);
+}
+
+html.dark .hero-content {
+  color: #f0f0f0;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
+}
+
+.hero-content .hero-btn {
+  width: fit-content;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  border: 2px solid white;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hero-content .hero-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Dark theme button adjustments */
+html.dark .hero-content .hero-btn {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+  border: 2px solid rgba(240, 240, 240, 0.8);
+}
+
+html.dark .hero-content .hero-btn:hover {
+  background-color: rgba(240, 240, 240, 0.2);
+  border-color: #f0f0f0;
+}
+
+.hero-item:nth-of-type(2) .hero-content {
+  display: block;
+  animation: heroShow 0.75s ease-in-out 0.3s forwards;
+}
+
+@keyframes heroShow {
+  0% {
+    filter: blur(5px);
+    transform: translateY(calc(-50% + 75px));
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+.hero-nav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  user-select: none;
+}
+
+.hero-nav .hero-btn-nav {
+  background-color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(0, 0, 0, 0.6);
+  margin: 0 0.25rem;
+  padding: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2em;
+  width: 50px;
+  height: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.hero-nav .hero-btn-nav:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+}
+
+/* Dark theme navigation buttons */
+html.dark .hero-nav .hero-btn-nav {
+  background-color: rgba(40, 40, 40, 0.9);
+  color: rgba(240, 240, 240, 0.9);
+  border: 2px solid rgba(240, 240, 240, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+html.dark .hero-nav .hero-btn-nav:hover {
+  background-color: rgba(60, 60, 60, 1);
+  border-color: rgba(240, 240, 240, 0.8);
+  color: #f0f0f0;
+}
+
+@media (width > 650px) and (width < 900px) {
+  .hero-content .hero-title {
+    font-size: 1rem;
+  }
+
+  .hero-content .hero-description {
+    font-size: 0.7rem;
+  }
+
+  .hero-content .hero-btn {
+    font-size: 0.7rem;
+  }
+
+  .hero-item {
+    width: 160px;
+    height: 270px;
+  }
+
+  .hero-item:nth-child(3) {
+    left: 50%;
+  }
+
+  .hero-item:nth-child(4) {
+    left: calc(50% + 170px);
+  }
+
+  .hero-item:nth-child(5) {
+    left: calc(50% + 340px);
+  }
+
+  .hero-item:nth-child(6) {
+    left: calc(50% + 510px);
+    opacity: 0;
+  }
+}
+
+@media (width < 650px) {
+  .hero-content .hero-title {
+    font-size: 0.9rem;
+  }
+
+  .hero-content .hero-description {
+    font-size: 0.65rem;
+  }
+
+  .hero-content .hero-btn {
+    font-size: 0.7rem;
+  }
+
+  .hero-item {
+    width: 130px;
+    height: 220px;
+  }
+
+  .hero-item:nth-child(3) {
+    left: 50%;
+  }
+
+  .hero-item:nth-child(4) {
+    left: calc(50% + 140px);
+  }
+
+  .hero-item:nth-child(5) {
+    left: calc(50% + 280px);
+  }
+
+  .hero-item:nth-child(6) {
+    left: calc(50% + 420px);
+    opacity: 0;
+  }
+}

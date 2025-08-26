@@ -1,0 +1,402 @@
+/* Service Details Page Section Styles */
+
+/* Root-level carousel section - better specificity approach */
+.carousel-section {
+  height: 100vh;
+  min-height: 100vh;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* More specific selector to override any conflicting styles */
+.details-page-section .carousel-section,
+section .carousel-section {
+  height: 100vh;
+  min-height: 100vh;
+}
+
+/* Theme support for details page section */
+.details-page-section {
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  width: 100%;
+  padding: 1rem;
+}
+
+html.dark .details-page-section {
+  background-color: #0a0a0a;
+  color: #ffffff;
+}
+
+/* Carousel responsive overrides */
+.hero-carousel-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 300px !important;
+}
+
+.hero-main {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Container helpers - Better than inline styles */
+.card-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  border-radius: 0.75rem; /* rounded-xl equivalent */
+}
+
+/* Override for carousel - no border radius */
+.carousel-section.card-container {
+  border-radius: 0;
+  overflow: visible;
+}
+
+/* Custom grid layouts that work with Tailwind */
+.grid-layout {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.grid-2-col {
+  grid-template-columns: 300px 1fr;
+}
+
+.grid-3-col {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-4-col {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* Section-specific height classes - More maintainable than inline styles */
+.contact-cards-section {
+  min-height: 700px;
+}
+
+.short-quotes-section {
+  min-height: 800px;
+}
+
+.pdf-quote-section {
+  min-height: 400px;
+  padding: 2rem 0;
+}
+
+/* PDF Carousel Styles */
+.pdf-carousel-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    height: 520px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.pdf-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pdf-carousel-track {
+    display: flex;
+    gap: 3rem;
+    padding: 3rem;
+    height: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.pdf-carousel-track::-webkit-scrollbar {
+    display: none;
+}
+
+.pdf-card-slide {
+    flex: 0 0 auto;
+    width: 320px;
+    height: 360px;
+}
+
+/* Navigation buttons */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-nav-btn:hover {
+  background: rgba(255, 255, 255, 1);
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-prev-btn {
+  left: 20px;
+}
+
+.carousel-next-btn {
+  right: 20px;
+}
+
+html.dark .carousel-nav-btn {
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+}
+
+html.dark .carousel-nav-btn:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+/* Long Card Section - Full Width with Proper Spacing */
+.long-card-section {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: 4rem;
+    z-index: 1;
+    background: transparent;
+}
+
+.long-card-section.expanded {
+    margin-bottom: 6rem;
+}/* Final Section - Price Cards with Top Margin */
+.final-section {
+    margin-top: 4rem;
+    clear: both;
+    position: relative;
+    z-index: 2;
+}
+
+/* Price Cards Section */
+.price-cards-section {
+    min-height: 550px;
+    padding: 3rem 0;
+    margin-top: 2rem;
+}
+
+.price-cards-section .grid-responsive-3 {
+    height: 100%;
+}
+
+.price-cards-section .card-container {
+    height: 100%;
+    min-height: 480px;
+    padding: 1.5rem;
+    overflow: visible;
+}
+
+.price-cards-section .card-hover-up {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform-origin: center;
+}
+
+.price-cards-section .card-hover-up:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}/* Enhanced hover effects */
+.card-hover-up {
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  cursor: pointer;
+}
+
+.card-hover-up:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+html.dark .card-hover-up:hover {
+  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 10px 10px -5px rgba(255, 255, 255, 0.04);
+}
+
+/* Slide animation for interactive cards */
+.slide-up-hover {
+  transition: transform 0.3s ease-in-out;
+}
+
+.slide-up-hover:hover {
+  transform: translateY(-100%);
+}
+
+/* Main container styling */
+.section-container {
+  width: 100%;
+  max-width: 72rem; /* max-w-6xl equivalent */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* space-y-6 equivalent */
+}
+
+/* Grid responsive helpers */
+.grid-responsive-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.grid-responsive-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .grid-responsive-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-responsive-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-responsive-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-responsive-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Responsive design breakpoints */
+@media (max-width: 768px) {
+  .grid-2-col, 
+  .grid-3-col, 
+  .grid-4-col {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero-carousel-wrapper {
+    height: 200px !important;
+  }
+  
+  .contact-cards-section,
+  .carousel-section,
+  .short-quotes-section,
+  .long-card-section {
+    height: auto;
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .details-page-section {
+    padding: 0.5rem;
+  }
+  
+  .card-container {
+    min-height: 200px;
+  }
+  
+  .section-container {
+    gap: 1rem;
+  }
+}
+
+/* Loading and error states */
+.service-details-loading-section,
+.service-details-error-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Enhanced focus states for accessibility */
+.card-container:focus-within {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for all interactive elements */
+.details-page-section * {
+  transition-property: background-color, border-color, color, transform, box-shadow;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
+
+/* Grid gap utilities */
+.gap-4 {
+  gap: 1rem;
+}
+
+.gap-6 {
+  gap: 1.5rem;
+}
+
+/* Additional utility classes */
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+/* Group hover effects */
+.group:hover .slide-up-hover {
+  transform: translateY(-100%);
+}

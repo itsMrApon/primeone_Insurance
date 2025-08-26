@@ -555,3 +555,36 @@
     transform: translate(0, 0);
   }
 }
+
+/* Prevent dark mode from affecting PDF card fonts - keep original colors */
+:root.dark .pdf-card {
+  color: #000; /* Force black text in dark mode */
+}
+
+:root.dark .pdf-card-content {
+  color: #000; /* Force black text in content area */
+}
+
+:root.dark .pdf-product-title {
+  color: #000; /* Force black title text */
+}
+
+:root.dark .pdf-product-price {
+  color: #000; /* Force black price text */
+}
+
+:root.dark .pdf-product-description {
+  color: #000; /* Force black description text */
+}
+
+:root.dark .pdf-card-back {
+  color: #fff; /* Keep white text on black background for back side */
+}
+
+:root.dark .pdf-added-text {
+  color: #fff; /* Keep white text for added text on black background */
+}
+
+:root.dark .pdf-added-subtext {
+  color: #fff; /* Keep white text for subtext on black background */
+}

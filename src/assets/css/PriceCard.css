@@ -391,3 +391,64 @@
   border-radius: 0 0.5em 0 0;
   z-index: 1;
 }
+
+/* Dark theme styles for PriceCard */
+html.dark .price-card {
+  --primary: #ff6d43;
+  --primary-hover: #ff8a6b;
+  --secondary: #5e70ff;
+  --secondary-hover: #7b89ff;
+  --accent: #00e0b0;
+  --text: #f0f0f0;
+  --bg: #1a1a1a;
+  --shadow-color: #000000;
+  --pattern-color: #333;
+  
+  background: var(--bg);
+  border-color: var(--text);
+}
+
+html.dark .price-card-header {
+  border-color: var(--text);
+  color: var(--text);
+}
+
+html.dark .price-card-title {
+  color: var(--text);
+}
+
+html.dark .price-card-subtitle {
+  color: rgba(240, 240, 240, 0.7);
+}
+
+html.dark .price-card-price {
+  color: var(--text);
+}
+
+html.dark .price-card-price span {
+  color: rgba(240, 240, 240, 0.8);
+}
+
+html.dark .price-card-features {
+  border-color: var(--text);
+}
+
+html.dark .price-card-feature {
+  color: var(--text);
+}
+
+html.dark .price-card-cta {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+html.dark .price-card-cta:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+html.dark .price-card-corner-slice {
+  background: var(--bg);
+  border-color: var(--text);
+}

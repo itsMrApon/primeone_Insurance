@@ -154,11 +154,11 @@ export default function Section1() {
                                             <path d="M47.5 22.5H52.5" stroke="#001D21" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
                                         </svg>
                                     </div>
-                                    <Link href="telto:(917)745-0549">
-                                        <h6 className="mt-5 mb-3 fs-20">+(917)745-0549</h6>
+                                    <Link href="tel:+19177450549">
+                                        <h6 className="mt-5 mb-3 fs-20">(917)745-0549</h6>
                                     </Link>
-                                    <Link href="telto:(347)400-7830">
-                                        <h6 className="mt-5 mb-3 fs-20">+(347)400-7830</h6>
+                                    <Link href="telto:+13474007830">
+                                        <h6 className="mt-5 mb-3 fs-20">(347)400-7830</h6>
                                     </Link>
                                     <p className="mb-0">Expert in this industry for nearly two decades.</p>
                                 </div>

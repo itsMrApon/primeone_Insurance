@@ -181,3 +181,37 @@
 .quote-card[data-service-type="other"] .quote-content-box {
   background: linear-gradient(135deg, #FF9800, #FFC107);
 }
+
+/* Dark theme styles for QuoteCard */
+html.dark .quote-card {
+  border-color: #333;
+  background: linear-gradient(135deg, #0000 18.75%, #2a2a2a 0 31.25%, #0000 0),
+    repeating-linear-gradient(45deg, #2a2a2a -6.25% 6.25%, #333 0 18.75%);
+  background-color: #333;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 30px 30px -10px;
+}
+
+html.dark .quote-content-box {
+  background: #444 !important;
+  color: #f0f0f0;
+}
+
+html.dark .quote-card[data-service-type="insurance"] .quote-content-box {
+  background: linear-gradient(135deg, #2E7D32, #4CAF50) !important;
+}
+
+html.dark .quote-card[data-service-type="tax"] .quote-content-box {
+  background: linear-gradient(135deg, #1565C0, #2196F3) !important;
+}
+
+html.dark .quote-card[data-service-type="other"] .quote-content-box {
+  background: linear-gradient(135deg, #E65100, #FF9800) !important;
+}
+
+html.dark .quote-title {
+  color: #f0f0f0;
+}
+
+html.dark .quote-description {
+  color: rgba(240, 240, 240, 0.8);
+}

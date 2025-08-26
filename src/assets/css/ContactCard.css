@@ -1,0 +1,272 @@
+.card {
+  width: 280px;
+  height: 280px;
+  background: white;
+  border-radius: 32px;
+  padding: 3px;
+  position: relative;
+  box-shadow: #604b4a30 0px 70px 30px -50px;
+  transition: transform 0.3s ease-out, border-top-left-radius 0.3s ease-out;
+  will-change: transform;
+}
+
+.card .mail {
+  position: absolute;
+  right: 2rem;
+  top: 1.4rem;
+  background: transparent;
+  border: none;
+}
+
+.card .mail svg {
+  stroke: #fbb9b6;
+  stroke-width: 3px;
+}
+
+.card .mail svg:hover {
+  stroke: #f55d56;
+}
+
+.card .profile-pic {
+  position: absolute;
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+  top: 3px;
+  left: 3px;
+  border-radius: 29px;
+  z-index: 1;
+  border: 0px solid #fbb9b6;
+  overflow: hidden;
+  transition: transform 0.3s ease-out, border-radius 0.3s ease-out, border 0.3s ease-out;
+  will-change: transform;
+}
+
+.card .profile-pic img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-position: 0px 0px;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.card .profile-pic svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0px 0px;
+  transform-origin: 45% 20%;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+.card .bottom {
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  background: #fbb9b6;
+  top: 80%;
+  border-radius: 29px;
+  z-index: 2;
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px inset;
+  overflow: hidden;
+  transition: top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1), border-radius 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  will-change: top, border-radius;
+}
+
+.card .bottom .content {
+  position: absolute;
+  bottom: 0;
+  left: 1.5rem;
+  right: 1.5rem;
+  height: 160px;
+}
+
+.card .bottom .content .name {
+  display: block;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+}
+
+.card .bottom .content .about-me {
+  display: block;
+  font-size: 0.9rem;
+  color: white;
+  margin-top: 1rem;
+}
+
+.card .bottom .bottom-bottom {
+  position: absolute;
+  bottom: 1rem;
+  left: 1.5rem;
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card .bottom .bottom-bottom .social-links-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.card .bottom .bottom-bottom .social-links-container svg {
+  height: 20px;
+  fill: white;
+  filter: drop-shadow(0 5px 5px rgba(165, 132, 130, 0.1333333333));
+}
+
+.card .bottom .bottom-bottom .social-links-container svg:hover {
+  fill: #f55d56;
+  transform: scale(1.2);
+}
+
+.card .bottom .bottom-bottom .button {
+  background: white;
+  color: #fbb9b6;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.6rem;
+  box-shadow: rgba(165, 132, 130, 0.1333333333) 0px 5px 5px 0px;
+}
+
+.card .bottom .bottom-bottom .button:hover {
+  background: #f55d56;
+  color: white;
+}
+
+.card:hover {
+  border-top-left-radius: 55px;
+}
+
+.card:hover .bottom {
+  top: 20%;
+  border-radius: 80px 29px 29px 29px;
+  transition: top 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s, border-radius 0.3s cubic-bezier(0.645, 0.045, 0.355, 1) 0.1s;
+}
+
+.card:hover .profile-pic {
+  transform: scale(0.36) translate3d(-170px, -170px, 0);
+  border-radius: 50%;
+  z-index: 3;
+  border: 7px solid #fbb9b6;
+  box-shadow: rgba(96, 75, 74, 0.1882352941) 0px 5px 5px 0px;
+  transition: transform 0.3s ease-out, border-radius 0.3s ease-out, border 0.3s ease-out;
+}
+
+.card:hover .profile-pic:hover {
+  transform: scale(0.47) translate3d(-130px, -130px, 0);
+  border-radius: 0px;
+}
+
+.card:hover .profile-pic img {
+  transform: scale(2.5);
+  -o-object-position: 0px 25px;
+  object-position: 0px 25px;
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+.card:hover .profile-pic svg {
+  transform: scale(2.5);
+  transition: all 0.5s ease-in-out 0.5s;
+}
+
+/* Service type specific styling */
+.card[data-service-type="insurance"] .bottom {
+  background: linear-gradient(135deg, #4CAF50, #66BB6A);
+}
+
+.card[data-service-type="tax"] .bottom {
+  background: linear-gradient(135deg, #2196F3, #42A5F5);
+}
+
+.card[data-service-type="other"] .bottom {
+  background: linear-gradient(135deg, #FF9800, #FFB74D);
+}
+
+.card[data-service-type="insurance"]:hover .profile-pic {
+  border: 7px solid #4CAF50;
+}
+
+.card[data-service-type="tax"]:hover .profile-pic {
+  border: 7px solid #2196F3;
+}
+
+.card[data-service-type="other"]:hover .profile-pic {
+  border: 7px solid #FF9800;
+}
+
+/* Service type specific mail icon colors */
+.card[data-service-type="insurance"] .mail svg {
+  stroke: #4CAF50;
+}
+
+.card[data-service-type="tax"] .mail svg {
+  stroke: #2196F3;
+}
+
+.card[data-service-type="other"] .mail svg {
+  stroke: #FF9800;
+}
+
+.card[data-service-type="insurance"] .mail svg:hover {
+  stroke: #2E7D32;
+}
+
+.card[data-service-type="tax"] .mail svg:hover {
+  stroke: #1565C0;
+}
+
+.card[data-service-type="other"] .mail svg:hover {
+  stroke: #E65100;
+}
+
+/* Dark theme styles for ContactCard */
+html.dark .card {
+  background: #1a1a1a;
+  color: #f0f0f0;
+  box-shadow: #00000050 0px 70px 30px -50px;
+}
+
+html.dark .card .mail svg {
+  stroke: #f0f0f0;
+}
+
+html.dark .card[data-service-type="insurance"] .mail svg {
+  stroke: #4CAF50;
+}
+
+html.dark .card[data-service-type="tax"] .mail svg {
+  stroke: #2196F3;
+}
+
+html.dark .card[data-service-type="other"] .mail svg {
+  stroke: #FF9800;
+}
+
+html.dark .card[data-service-type="insurance"] .mail svg:hover {
+  stroke: #66BB6A;
+}
+
+html.dark .card[data-service-type="tax"] .mail svg:hover {
+  stroke: #42A5F5;
+}
+
+html.dark .card[data-service-type="other"] .mail svg:hover {
+  stroke: #FFB74D;
+}
+
+html.dark .card .top .userInfo h3 {
+  color: #f0f0f0;
+}
+
+html.dark .card .top .userInfo span {
+  color: rgba(240, 240, 240, 0.7);
+}
+
+html.dark .card .bottom .bottom-bottom span {
+  color: rgba(240, 240, 240, 0.8);
+}

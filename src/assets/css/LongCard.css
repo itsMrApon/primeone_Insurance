@@ -1,139 +1,281 @@
-/* From Uiverse.io by Bastiennnn */
-.long-card {
-  width: 350px;
-  height: 500px;
-  margin: 0 auto;
-  background-color: #24233b;
-  border-radius: 8px;
-  z-index: 1;
-  box-shadow: 0px 10px 10px rgb(73, 70, 92);
-  transition: 0.5s;
+/* LongCard specific styles - Light theme only with theme switching support */
+:root {
+  --longcard-background-light: hsla(230, 80%, 98%, 1);
+  --longcard-line-light: hsla(230, 35%, 92.5%, 1);
+  --longcard-dot-light: hsla(230, 25%, 75%, 1);
+  --longcard-text-top-light: hsla(240, 25%, 10%, 1);
+  --longcard-text-bottom-light: hsla(240, 25%, 25%, 1);
+  --longcard-text-circle-light: hsla(240, 25%, 25%, 1);
+
+  --longcard-background-dark: hsla(230, 55%, 4%, 1);
+  --longcard-line-dark: hsla(230, 25%, 15%, .75);
+  --longcard-dot-dark: hsla(230, 25%, 90%, 1);
+  --longcard-text-top-dark: hsla(240, 60%, 90%, 1);
+  --longcard-text-bottom-dark: hsla(240, 60%, 95%, 1);
+  --longcard-text-circle-dark: hsla(240, 60%, 95%, .15);
 }
 
-.long-card:hover {
-  transform: translateY(-7px);
-  box-shadow: 0px 10px 10px black;
+html {
+  --longcard-background: var(--longcard-background-light);
+  --longcard-line: var(--longcard-line-light);
+  --longcard-dot: var(--longcard-dot-light);
+  --longcard-text-top: var(--longcard-text-top-light);
+  --longcard-text-bottom: var(--longcard-text-bottom-light);
+  --longcard-text-circle: var(--longcard-text-circle-light);
 }
 
-.long-card-top {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
+html.dark {
+  --longcard-background: var(--longcard-background-dark);
+  --longcard-line: var(--longcard-line-dark);
+  --longcard-dot: var(--longcard-dot-dark);
+  --longcard-text-top: var(--longcard-text-top-dark);
+  --longcard-text-bottom: var(--longcard-text-bottom-dark);
+  --longcard-text-circle: var(--longcard-text-circle-dark);
 }
 
-.long-card-circle {
-  padding: 0 4px;
+.longcard-wrapper {
+  font-family: "Instrument Sans", sans-serif;
+  background-color: var(--longcard-background);
+  width: 100vw;
+  margin: 0;
+  padding: 2rem 0;
+  box-sizing: border-box;
+  min-height: auto;
+  transition: all 0.5s ease;
 }
 
-.long-card-circle2 {
-  display: inline-block;
-  align-items: center;
-  width: 10px;
-  height: 10px;
-  padding: 1px;
-  border-radius: 5px;
+.longcard-wrapper.expanded {
+  min-height: auto;
+  padding: 4rem 0 6rem 0;
+  margin-bottom: 4rem;
 }
 
-.long-card-red {
-  background-color: #ff605c;
-}
-
-.long-card-yellow {
-  background-color: #ffbd44;
-}
-
-.long-card-green {
-  background-color: #00ca4e;
-}
-
-.long-card-header {
-  margin: 5px;
-  margin-top: 5px;
-  border-radius: 5px;
-}
-
-.long-card-title {
-  color: white;
-  padding-left: 50px;
-  font-size: 15px;
+.longcard-main {
+  width: 100%;
+  padding: 0;
   margin: 0;
 }
 
-.long-card-code-container {
+.longcard-section {
+  width: 100vw;
+  min-height: auto;
+  margin: 0;
+  padding: 1rem 2rem;
   text-align: center;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  transition: all 0.5s ease;
 }
 
-.long-card-code {
-  width: 320px;
-  height: 420px;
-  resize: none;
-  background-color: rgb(73, 70, 92);
-  border-radius: 5px;
+.longcard-wrapper.expanded .longcard-section {
+  padding: 3rem 2rem;
+  min-height: auto;
+}
+
+.longcard-dot {
+  height: 5px;
+  width: 5px;
+  background-color: var(--longcard-dot);
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--longcard-background);
+}
+
+.longcard-dot:nth-child(1) {
+  top: -2px;
+  left: -2px;
+}
+
+.longcard-dot:nth-child(2) {
+  bottom: -2px;
+  right: -2px;
+}
+
+.longcard-hr {
   border: none;
-  color: white;
-  padding: 15px;
-  font-family: 'Courier New', monospace;
-  font-size: 12px;
+  height: 1px;
+  width: 100%;
+  margin: 0;
+  background-color: var(--longcard-line);
+}
+
+.longcard-title {
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+  font-variation-settings: "wdth" 95;
+  font-size: clamp(24px, 4.5vw, 48px);
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+  max-width: 1200px;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+  position: relative;
+  transition: all 0.5s ease;
+  overflow: hidden;
+}
+
+.longcard-title.collapsed {
+  max-height: 120px;
   line-height: 1.4;
-  overflow-y: auto;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  padding-bottom: 0.5rem;
 }
 
-.long-card-code:focus {
-  outline: none !important;
+.longcard-title.expanded {
+  max-height: none;
+  min-height: auto;
+  height: auto;
+  line-height: 1.4;
+  display: block;
+  overflow: visible;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
-/* Service-specific styling */
-.long-card-service-info {
-  color: #00ca4e;
-  font-weight: bold;
+.longcard-title:hover {
+  transform: translateY(-2px);
+  transition: transform 0.3s ease;
 }
 
-.long-card-service-description {
-  color: #ffbd44;
-  margin: 10px 0;
+/* Button Container */
+.longcard-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  margin-top: auto;
 }
 
-.long-card-service-details {
-  color: #ff605c;
+.longcard-wrapper.expanded .longcard-button-container {
+  padding: 3rem 0 2rem 0;
 }
 
-.long-card-service-features {
-  color: #87ceeb;
-  margin: 8px 0;
+/* Animated READ/MORE Button Styles */
+.long_card_button {
+  display: flex;
+  cursor: pointer;
+  margin: 0 auto;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .long-card {
-    width: 100%;
-    max-width: 350px;
-    height: 450px;
+.box {
+  width: 35px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  transition: all .8s;
+  cursor: pointer;
+  position: relative;
+  background: rgb(58, 165, 253);
+  overflow: hidden;
+}
+
+.box:before {
+  content: "M";
+  position: absolute;
+  top: 0;
+  background: #0f0f0f;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform .4s;
+}
+
+.box:nth-child(2)::before {
+  transform: translateY(-100%);
+  content: 'O';
+}
+
+.box:nth-child(3)::before {
+  content: 'R';
+}
+
+.box:nth-child(4)::before {
+  transform: translateY(-100%);
+  content: 'E';
+}
+
+.long_card_button:hover .box:before {
+  transform: translateY(0);
+}
+
+/* Animated text elements */
+.longcard-text {
+  background-image: linear-gradient(180deg, var(--longcard-text-top) 0%, var(--longcard-text-bottom) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.4s ease;
+  display: inline-block;
+  animation: longcard-fadeInUp 0.6s ease forwards;
+}
+
+.longcard-text:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.longcard-text:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.longcard-text:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+.longcard-strong {
+  display: inline-block;
+  color: transparent;
+  background-image: url('https://assets.codepen.io/165585/circle-bg_1.svg');
+  background-color: var(--longcard-text-circle);
+  background-size: 300px;
+  background-position: 50% 80%;
+  background-blend-mode: overlay;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.015em;
+  transition: all 0.4s ease;
+  animation: longcard-fadeInUp 0.6s ease forwards;
+  animation-delay: 0.2s;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+@keyframes longcard-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .long-card-code {
-    width: 90%;
-    height: 370px;
-    font-size: 11px;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 480px) {
-  .long-card {
-    width: 100%;
-    max-width: 320px;
-    height: 400px;
-  }
-  
-  .long-card-code {
-    width: 90%;
-    height: 320px;
-    font-size: 10px;
-    padding: 10px;
-  }
-  
-  .long-card-title {
-    font-size: 13px;
-    padding-left: 30px;
-  }
+/* Hover effects for interactive elements */
+.longcard-text:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+}
+
+.longcard-strong:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
 }
