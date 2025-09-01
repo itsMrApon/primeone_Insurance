@@ -428,12 +428,20 @@ html.dark .intro-contact-section {
 @media (max-width: 768px) {
   .pdf-carousel-container {
     height: 600px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+    touch-action: pan-x;
   }
 }
 
 @media (max-width: 480px) {
   .pdf-carousel-container {
     height: 510px;
+    overflow-y: hidden;
+    overflow-x: auto;
+    position: relative;
+    touch-action: pan-x;
   }
 }
 
@@ -452,6 +460,7 @@ html.dark .intro-contact-section {
     scroll-behavior: smooth;
     scrollbar-width: none;
     -ms-overflow-style: none;
+    touch-action: pan-x;
 }
 
 .pdf-carousel-track::-webkit-scrollbar {
@@ -462,12 +471,14 @@ html.dark .intro-contact-section {
     flex: 0 0 auto;
     width: 320px;
     height: 360px;
+    margin-right: 2rem;
 }
 
 @media (max-width: 768px) {
   .pdf-card-slide {
     width: 280px;
-    height: 450px;
+    height: 400px;
+    margin-right: 4rem;
   }
 }
 
@@ -475,6 +486,7 @@ html.dark .intro-contact-section {
   .pdf-card-slide {
     width: 250px;
     height: 420px;
+    margin-right: 3.5rem;
   }
 }
 
