@@ -7,15 +7,11 @@ import PageHeader from "@/components/sections/PageHeader";
 
 function ServiceDetailsContent() {
     const searchParams = useSearchParams();
-    const serviceTitle = searchParams.get('title') || 'Service Details';
     const serviceId = searchParams.get('id');
     
     return (
         <Layout>
-            <PageHeader 
-                title={serviceTitle} 
-                current_page={serviceTitle} 
-            />
+
             <Section1 serviceId={serviceId} />
         </Layout>
     );

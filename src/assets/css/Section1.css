@@ -31,6 +31,99 @@ html.dark .details-page-section {
   color: #ffffff;
 }
 
+/* New Grid Layout for Intro + Introduction + Contact */
+.intro-contact-section {
+  padding: 4rem 0;
+  background-color: #fafafa;
+}
+
+.intro-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  min-height: 80vh;
+  width: 100%;
+}
+
+.intro-left-section {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  width: 100%;
+  height: 100%;
+}
+
+.intro-upper-right-section {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 2rem;
+}
+
+.intro-lower-right-section {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1024px) {
+  .intro-contact-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+  
+  .intro-left-section {
+    grid-column: 1;
+    grid-row: 1;
+    justify-content: center;
+  }
+  
+  .intro-upper-right-section {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: center;
+  }
+  
+  .intro-lower-right-section {
+    grid-column: 1;
+    grid-row: 3;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-contact-section {
+    padding: 2rem 0;
+  }
+  
+  .intro-contact-grid {
+    padding: 0 0.5rem;
+    gap: 1.5rem;
+  }
+}
+
+/* Dark theme support for intro section */
+html.dark .intro-contact-section {
+  background-color: #0f0f0f;
+}
+
 /* Carousel responsive overrides */
 .hero-carousel-wrapper {
   width: 100% !important;
@@ -58,6 +151,138 @@ html.dark .details-page-section {
   border-radius: 0;
   overflow: visible;
 }
+
+/* //////// */
+/* Contact Section */
+.contact-section {
+  margin-bottom: 4rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.contact-card {
+  background: var(--tc-system-white);
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.email-card {
+  background: var(--tc-system-black);
+  color: var(--tc-system-white);
+}
+
+.phone-card {
+  background: var(--tc-theme-primary);
+  color: var(--tc-system-white);
+}
+
+.location-card {
+  background: var(--tc-system-white);
+  color: var(--tc-system-black);
+}
+
+.contact-icon {
+  font-size: var(--tc-fs-1);
+  margin-bottom: 1rem;
+}
+
+.contact-info span {
+  font-size: var(--tc-fs-6);
+  font-weight: var(--tc-fw-medium);
+}
+
+/* //////// */
+
+
+/* Services Grid */
+.services-grid-section {
+  margin-bottom: 4rem;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+}
+
+.services-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.expertise-text {
+  font-size: var(--tc-fs-6);
+  line-height: var(--tc-body-line-height);
+  color: var(--tc-body-text-secondary);
+  margin-bottom: 2rem;
+}
+
+.skills-card {
+  background: var(--tc-system-black);
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--tc-system-white);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.skill-item {
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  transition: background-color 0.3s ease;
+}
+
+.skill-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.soft-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: #f8f9fa;
+  color: #333;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #e9ecef;
+}
+
+.skill-tag:nth-child(4) {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* //////// */
+
 
 /* Custom grid layouts that work with Tailwind */
 .grid-layout {

@@ -14,6 +14,9 @@ import LogoCard from "./LogoCard";
 import Carousel from "./Carousel";
 import CallCard from "./CallCard";
 import EmailCard from "./EmailCard";
+import IntroCard from "./IntroCard";
+import ClipCard from "./ClipCard";
+
 
 
 import '../../../assets/css/Loading.css';
@@ -105,20 +108,102 @@ export default function Section1({ serviceId }: Section1Props) {
     return (
         <>
             {/* 1. CAROUSEL - FULL HEIGHT, NO CONTAINER */}
-            <div className="carousel-section">
+            <section>
+             <div className="carousel-section">
                 <Carousel service={service} />
-            </div>
+             </div>
+            </section>
             
-            <section className="details-page-section">
-                <div className="section-container">
-                
-                    {/* 2. CONTACT CARDS + THEME + LOGO SECTION */}
-                <div className="contact-cards-section card-container">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full h-full">
-                        {/* Contact Cards Row */}
-                        <div className="grid-responsive-2">
-                            <div className="card-container card-hover-up">
-                                <ContactCard 
+            {/* 2. NEW GRID LAYOUT - Intro + Introduction + Contact */}
+            <section className="intro-contact-section">
+                <div className="intro-contact-grid">
+                    {/* Left Side - Hello/Intro */}
+                    <div className="intro-left-section">
+                        <IntroCard service={service} />
+                    </div>
+                    
+                    {/* Upper Right - Introduction */}
+                    <div className="intro-upper-right-section">
+                        <ShortCard service={service} />
+                    </div>
+                    
+                    {/* Lower Right - Get In Touch */}
+                    <div className="intro-lower-right-section">
+                        <div className="contact-section">
+                            <h3 className="section-title">Get In Touch</h3>
+                            <div className="contact-grid">
+                                <div className="contact-card email-card">
+                                    <div className="contact-icon">📧</div>
+                                    <div className="contact-info">
+                                        <span>dhossain143@gmail.com</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="contact-card phone-card">
+                                    <div className="contact-icon">📞</div>
+                                    <div className="contact-info">
+                                        <span>917-745-0549</span>
+                                    </div>
+                                </div>
+                                
+                                <div className="contact-card location-card">
+                                    <div className="contact-icon">📍</div>
+                                    <div className="contact-info">
+                                        <span>New York, NY</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            {/* Services Grid */}
+            <section id="services" className="services-grid-section">
+                        <div className="services-grid">
+
+                            {/* Expertise Column */}
+                            <div className="services-column">
+                                <h3 className="column-title">Expertise</h3>
+                                <p className="expertise-text">Insurance Coverage, Tax Planning, Financial Advisory, Risk Assessment, Investment Planning, Business Consulting</p>
+                                
+                                <h3 className="column-title">Hard Skills</h3>
+                                <div className="skills-card">
+                                    <div className="skills-grid">
+                                        <div className="skill-item">📊</div>
+                                        <div className="skill-item">💰</div>
+                                        <div className="skill-item">📋</div>
+                                        <div className="skill-item">📈</div>
+                                        <div className="skill-item">🛡️</div>
+                                        <div className="skill-item">📝</div>
+                                    </div>
+                                </div>
+                                
+                                <h3 className="column-title">Soft Skills</h3>
+                                <div className="soft-skills">
+                                    <span className="skill-tag">#Communication</span>
+                                    <span className="skill-tag">#Problem_Solving</span>
+                                    <span className="skill-tag">#Analytical</span>
+                                    <span className="skill-tag">#Trustworthy</span>
+                                    <span className="skill-tag">#Professional</span>
+                                </div>
+                            </div>
+
+                            {/* Experience Column */}
+                            <div className="services-column">
+                                <h3 className="column-title">Experience</h3>
+                                <div className="experience-cards">
+                                    <ClipCard service={service} />
+                                </div>
+                            </div>
+
+                            {/* Education Column */}
+                            <div className="services-column">
+                                <h3 className="column-title">Education</h3>
+                                <div className="education-cards">
+                                    <div className="education-card">
+                                        <ContactCard 
                                     name="Delowar Hassan" 
                                     title="Finance & Investment. (BBA) , Baruch College CUNY"
                                     email="dhossain143@gmail.com"
@@ -126,9 +211,9 @@ export default function Section1({ serviceId }: Section1Props) {
                                     image="/assets/imgs/team/delowar-hossain.jpg"
                                     service={service}
                                 />
-                            </div>
-                            <div className="card-container card-hover-up">
-                                <ContactCard 
+                                    </div>
+                                    <div className="education-card">
+                                        <ContactCard 
                                     name="Kamrun Bithi" 
                                     title="Accounting. (BBA), Monroe College"
                                     email="helpfortax@gmail.com"
@@ -136,118 +221,12 @@ export default function Section1({ serviceId }: Section1Props) {
                                     image="/assets/imgs/team/kamrun_bithi.jpg"
                                     service={service}
                                 />
-                            </div>
-                        </div>
-                        {/* Call and Email Cards - Right side */}
-                    <div className="card-container card-hover-up">
-                        <div className="flex items-center justify-center gap-4">
-                            <CallCard service={service} />
-                            <EmailCard service={service} />
-                            <EmailCard service={service} />
-                        </div>
-                    </div>
-                        {/* Theme and Logo Cards */}
-                        <div className="grid-responsive-2">
-                            <div className="card-container card-hover-up">
-                                <ThemeCard service={service} />
-                            </div>
-                            
-                            <div className="card-container card-hover-up">
-                                <LogoCard 
-                                    image="/assets/imgs/logo/dark.png"
-                                    service={service}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 3. SHORT CARD - SEPARATE ROW */}
-                <div className="w-full short-card-section">
-                    <div className="card-container card-hover-up">
-                        <ShortCard service={service} />
-                    </div>
-                </div>
-
-                {/* 4. THREE COLUMN LAYOUT WITH SEPARATORS */}
-                <div className="w-full three-column-section">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 h-full">
-                        {/* Column 1 - Left (Empty) */}
-                        <div className="border-r border-gray-300 dark:border-gray-600 pr-4 min-h-[400px]">
-                            {/* Left column - empty */}
-                        </div>
-                        
-                        {/* Column 2 - Middle (Empty) */}
-                        <div className="border-r border-gray-300 dark:border-gray-600 pr-4 min-h-[400px]">
-                            {/* Middle column - empty */}
-                        </div>
-
-                        {/* Column 3 - Right: 3 QuoteCards stacked vertically */}
-                        <div className="flex flex-col gap-4">
-                            <div className="card-container card-hover-up">
-                                <QuoteCard service={service} />
-                            </div>
-                            <div className="card-container card-hover-up">
-                                <QuoteCard service={service} />
-                            </div>
-                            <div className="card-container card-hover-up">
-                                <QuoteCard service={service} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                {/* 5. PDF CARDS CAROUSEL - FULL WIDTH */}
-                <div className="w-full pdf-quote-section">
-                    <div className="pdf-carousel-container">
-                        <div className="pdf-carousel-wrapper">
-                            <div className="pdf-carousel-track" id="pdfCarouselTrack">
-                                <div className="pdf-card-slide">
-                                    <PdfCard service={service} />
-                                </div>
-                                <div className="pdf-card-slide">
-                                    <PdfCard service={service} />
-                                </div>
-                                <div className="pdf-card-slide">
-                                    <PdfCard service={service} />
-                                </div>
-                                <div className="pdf-card-slide">
-                                    <PdfCard service={service} />
-                                </div>
-                                <div className="pdf-card-slide">
-                                    <PdfCard service={service} />
+                                    </div>
                                 </div>
                             </div>
-                            
-                            {/* Navigation buttons */}
-                            <button 
-                                className="carousel-nav-btn carousel-prev-btn"
-                                onClick={() => {
-                                    const track = document.getElementById('pdfCarouselTrack');
-                                    if (track) {
-                                        track.scrollBy({ left: -368, behavior: 'smooth' });
-                                    }
-                                }}
-                            >
-                                ‹
-                            </button>
-                            <button 
-                                className="carousel-nav-btn carousel-next-btn"
-                                onClick={() => {
-                                    const track = document.getElementById('pdfCarouselTrack');
-                                    if (track) {
-                                        track.scrollBy({ left: 368, behavior: 'smooth' });
-                                    }
-                                }}
-                            >
-                                ›
-                            </button>
                         </div>
-                    </div>
-                </div>
-
-                </div>
             </section>
+            
 
             {/* 6. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
             <div className={`long-card-section ${service ? 'loaded' : ''}`}>
