@@ -5,9 +5,23 @@ import '@/assets/css/PriceCard.css';
 
 interface PriceCardProps {
   service: Service;
+  customCallToAction?: string;
+  customTitle?: string;
+  customDescription?: string;
+  customPrice?: number;
+  customFeatures?: Array<{ icon: string; text: string }>;
+  showPrice?: boolean;
 }
 
-const PriceCard: React.FC<PriceCardProps> = ({ service }) => {
+const PriceCard: React.FC<PriceCardProps> = ({ 
+  service, 
+  customCallToAction, 
+  customTitle, 
+  customDescription, 
+  customPrice, 
+  customFeatures,
+  showPrice = true
+}) => {
   const getServiceFeatures = (serviceType: string) => {
     switch (serviceType?.toLowerCase()) {
       case 'insurance':
@@ -100,7 +114,7 @@ const PriceCard: React.FC<PriceCardProps> = ({ service }) => {
     return icons[iconName as keyof typeof icons] || icons.star;
   };
 
-  const features = getServiceFeatures(service.type);
+  const features = customFeatures || getServiceFeatures(service.type);
 
   return (
     <div className="price-card">
@@ -112,12 +126,12 @@ const PriceCard: React.FC<PriceCardProps> = ({ service }) => {
         </svg>
       </div>
       <div className="price-card-title-area">
-        <span>{service.title}</span>
+        <span>{customTitle || service.title}</span>
         <span className="price-card-tag">{service.type}</span>
       </div>
       <div className="price-card-body">
         <div className="price-card-description">
-          {service.details_short || 'Professional service tailored to meet your specific needs with expert guidance and reliable support.'}
+          {customDescription || service.details_short || 'Professional service tailored to meet your specific needs with expert guidance and reliable support.'}
         </div>
         <div className="price-card-feature-grid">
           {features.map((feature, index) => (
@@ -130,12 +144,14 @@ const PriceCard: React.FC<PriceCardProps> = ({ service }) => {
           ))}
         </div>
         <div className="price-card-actions">
-          <div className="price-card-price">
-            <span className="price-card-price-currency">$</span>{service.price}
-            <span className="price-card-price-period">per service</span>
-          </div>
+          {showPrice && (
+            <div className="price-card-price">
+              <span className="price-card-price-currency">$</span>{customPrice || service.price}
+              <span className="price-card-price-period">Minimum</span>
+            </div>
+          )}
           <Link href="/contact" className="price-card-button">
-            Get Started
+            {customCallToAction || "Get Started"}
           </Link>
         </div>
       </div>

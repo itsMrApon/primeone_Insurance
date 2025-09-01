@@ -87,35 +87,51 @@ html.dark .details-page-section {
     grid-template-rows: auto auto auto;
     gap: 2rem;
     padding: 0 1rem;
+    min-height: auto;
   }
   
   .intro-left-section {
     grid-column: 1;
     grid-row: 1;
     justify-content: center;
+    height: auto;
+    min-height: 300px;
   }
   
   .intro-upper-right-section {
     grid-column: 1;
     grid-row: 2;
     justify-content: center;
+    padding: 1rem;
   }
   
   .intro-lower-right-section {
     grid-column: 1;
     grid-row: 3;
     justify-content: center;
+    padding: 1rem;
+    margin-top: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .intro-contact-section {
-    padding: 2rem 0;
+    padding: 1rem 0;
   }
   
   .intro-contact-grid {
     padding: 0 0.5rem;
-    gap: 1.5rem;
+    gap: 1rem;
+    min-height: auto;
+  }
+  
+  .intro-left-section {
+    display: none;
+  }
+  
+  .intro-upper-right-section,
+  .intro-lower-right-section {
+    padding: 0.5rem;
   }
 }
 
@@ -129,6 +145,18 @@ html.dark .intro-contact-section {
   width: 100% !important;
   max-width: 100% !important;
   height: 300px !important;
+}
+
+@media (max-width: 768px) {
+  .hero-carousel-wrapper {
+    height: 200px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-carousel-wrapper {
+    height: 150px !important;
+  }
 }
 
 .hero-main {
@@ -162,6 +190,13 @@ html.dark .intro-contact-section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 .contact-card {
@@ -217,10 +252,25 @@ html.dark .intro-contact-section {
   gap: 3rem;
 }
 
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .services-column {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 0 1rem;
 }
 
 .expertise-text {
@@ -243,6 +293,26 @@ html.dark .intro-contact-section {
   gap: 1rem;
 }
 
+@media (max-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+  }
+  
+  .skill-item {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+}
+
 .skill-item {
   width: 60px;
   height: 60px;
@@ -257,6 +327,17 @@ html.dark .intro-contact-section {
 
 .skill-item:hover {
   background: rgba(255, 255, 255, 0.2);
+}
+
+.education-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.education-card {
+  padding: 0.5rem;
 }
 
 .soft-skills {
@@ -282,6 +363,14 @@ html.dark .intro-contact-section {
 }
 
 /* //////// */
+
+/* pdf */
+/* //////// */
+
+
+
+/* //////// */
+
 
 
 /* Custom grid layouts that work with Tailwind */
@@ -318,6 +407,10 @@ html.dark .intro-contact-section {
 }
 
 /* PDF Carousel Styles */
+.pdf-carousel-section {
+    padding: 2rem 1rem;
+}
+
 .pdf-carousel-container {
     width: 100vw;
     position: relative;
@@ -330,6 +423,18 @@ html.dark .intro-contact-section {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 768px) {
+  .pdf-carousel-container {
+    height: 600px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-carousel-container {
+    height: 510px;
+  }
 }
 
 .pdf-carousel-wrapper {
@@ -359,6 +464,20 @@ html.dark .intro-contact-section {
     height: 360px;
 }
 
+@media (max-width: 768px) {
+  .pdf-card-slide {
+    width: 280px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-card-slide {
+    width: 250px;
+    height: 420px;
+  }
+}
+
 /* Navigation buttons */
 .carousel-nav-btn {
   position: absolute;
@@ -376,6 +495,22 @@ html.dark .intro-contact-section {
   z-index: 10;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 480px) {
+  .carousel-nav-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+  }
+  
+  .carousel-prev-btn {
+    left: 10px;
+  }
+  
+  .carousel-next-btn {
+    right: 10px;
+  }
 }
 
 .carousel-nav-btn:hover {
@@ -427,8 +562,15 @@ html.dark .carousel-nav-btn:hover {
 /* Price Cards Section */
 .price-cards-section {
     min-height: 550px;
-    padding: 3rem 0;
-    margin-top: 2rem;
+    padding: 1rem 0;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .price-cards-section {
+    min-height: auto;
+    padding: 0.5rem 0;
+  }
 }
 
 .price-cards-section .grid-responsive-3 {
@@ -442,28 +584,10 @@ html.dark .carousel-nav-btn:hover {
     overflow: visible;
 }
 
-.price-cards-section .card-hover-up {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    transform-origin: center;
-}
-
-.price-cards-section .card-hover-up:hover {
-    transform: translateY(-15px) scale(1.02);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-    z-index: 10;
-}/* Enhanced hover effects */
+/* Enhanced hover effects */
 .card-hover-up {
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   cursor: pointer;
-}
-
-.card-hover-up:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-html.dark .card-hover-up:hover {
-  box-shadow: 0 20px 25px -5px rgba(255, 255, 255, 0.1), 0 10px 10px -5px rgba(255, 255, 255, 0.04);
 }
 
 /* Slide animation for interactive cards */
@@ -478,7 +602,6 @@ html.dark .card-hover-up:hover {
 /* Main container styling */
 .section-container {
   width: 100%;
-  max-width: 72rem; /* max-w-6xl equivalent */
   margin: 0 auto;
   display: flex;
   flex-direction: column;

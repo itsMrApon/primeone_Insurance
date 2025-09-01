@@ -10,10 +10,7 @@ import LongCard from "./LongCard";
 import ShortCard from "./ShortCard";
 import ContactCard from "./ContactCard";
 import ThemeCard from "./ThemeCard";
-import LogoCard from "./LogoCard";
 import Carousel from "./Carousel";
-import CallCard from "./CallCard";
-import EmailCard from "./EmailCard";
 import IntroCard from "./IntroCard";
 import ClipCard from "./ClipCard";
 
@@ -135,21 +132,27 @@ export default function Section1({ serviceId }: Section1Props) {
                                 <div className="contact-card email-card">
                                     <div className="contact-icon">📧</div>
                                     <div className="contact-info">
-                                        <span>dhossain143@gmail.com</span>
+                                        <a href="mailto:dhossain143@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                            <span>dhossain143@gmail.com</span>
+                                        </a>
                                     </div>
                                 </div>
                                 
                                 <div className="contact-card phone-card">
                                     <div className="contact-icon">📞</div>
                                     <div className="contact-info">
-                                        <span>917-745-0549</span>
+                                        <a href="tel:+19177450549" style={{ color: '#000000', textDecoration: 'none', fontWeight: 'bold' }}>
+                                            <span>917-745-0549</span>
+                                        </a>
                                     </div>
                                 </div>
                                 
                                 <div className="contact-card location-card">
                                     <div className="contact-icon">📍</div>
                                     <div className="contact-info">
-                                        <span>New York, NY</span>
+                                        <a href="https://maps.google.com/?q=69-03+Woodside+Ave+Woodside,+NYC" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                                            <span>69-03 Woodside Ave Woodside, NYC</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -166,33 +169,22 @@ export default function Section1({ serviceId }: Section1Props) {
                             {/* Expertise Column */}
                             <div className="services-column">
                                 <h3 className="column-title">Expertise</h3>
-                                <p className="expertise-text">Insurance Coverage, Tax Planning, Financial Advisory, Risk Assessment, Investment Planning, Business Consulting</p>
-                                
-                                <h3 className="column-title">Hard Skills</h3>
-                                <div className="skills-card">
-                                    <div className="skills-grid">
-                                        <div className="skill-item">📊</div>
-                                        <div className="skill-item">💰</div>
-                                        <div className="skill-item">📋</div>
-                                        <div className="skill-item">📈</div>
-                                        <div className="skill-item">🛡️</div>
-                                        <div className="skill-item">📝</div>
-                                    </div>
+                                <p className="expertise-text">Extensive industry expertise with proficiency in both automated and manual processes.</p>
+                                <div className="experience-cards">
+                                    <QuoteCard service={service} customCallToAction="FAQ Quote" customTitle="FAQ" />
+                                </div>
+                                <div className="experience-cards">
+                                    <QuoteCard service={service} customCallToAction="Portal Quote" customTitle="Portal" />
                                 </div>
                                 
-                                <h3 className="column-title">Soft Skills</h3>
-                                <div className="soft-skills">
-                                    <span className="skill-tag">#Communication</span>
-                                    <span className="skill-tag">#Problem_Solving</span>
-                                    <span className="skill-tag">#Analytical</span>
-                                    <span className="skill-tag">#Trustworthy</span>
-                                    <span className="skill-tag">#Professional</span>
-                                </div>
+                                
                             </div>
 
                             {/* Experience Column */}
                             <div className="services-column">
-                                <h3 className="column-title">Experience</h3>
+                                <h3 className="column-title">Visualization</h3>
+                                <p className="expertise-text">We provide in-depth explanations of our services through our YouTube channel.</p>
+                                
                                 <div className="experience-cards">
                                     <ClipCard service={service} />
                                 </div>
@@ -200,7 +192,8 @@ export default function Section1({ serviceId }: Section1Props) {
 
                             {/* Education Column */}
                             <div className="services-column">
-                                <h3 className="column-title">Education</h3>
+                                <h3 className="column-title">Who We Are</h3>
+                                <p className="expertise-text">Bringing more than 20 years of industry experience.</p>
                                 <div className="education-cards">
                                     <div className="education-card">
                                         <ContactCard 
@@ -223,30 +216,132 @@ export default function Section1({ serviceId }: Section1Props) {
                                 />
                                     </div>
                                 </div>
+                                <h3 className="column-title">Communication</h3>
+                                <div className="soft-skills">
+                                    <span className="skill-tag">#IndividualPortal</span>
+                                    <span className="skill-tag">#EasySolutions</span>
+                                    <span className="skill-tag">#Analytical</span>
+                                    <span className="skill-tag">#Bangali</span>
+                                    <span className="skill-tag">#Professional</span>
+                                    <span className="skill-tag">#RealTimeTracking</span>
+                                </div>
                             </div>
                         </div>
             </section>
             
 
+
+
+            {/* PDF Carousel Section */}
+            <section className="pdf-carousel-section">
+                        <h3 className="section-title">Documents & Resources</h3>
+                        <div className="pdf-carousel-container">
+                            <div className="pdf-carousel-wrapper">
+                                <div className="pdf-carousel-track" id="pdfCarouselTrack">
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                    <div className="pdf-card-slide">
+                                        <PdfCard service={service} />
+                                    </div>
+                                </div>
+                                
+                                <button 
+                                    className="carousel-nav-btn carousel-prev-btn"
+                                    onClick={() => {
+                                        const track = document.getElementById('pdfCarouselTrack');
+                                        if (track) {
+                                            track.scrollBy({ left: -368, behavior: 'smooth' });
+                                        }
+                                    }}
+                                >
+                                    ‹
+                                </button>
+                                <button 
+                                    className="carousel-nav-btn carousel-next-btn"
+                                    onClick={() => {
+                                        const track = document.getElementById('pdfCarouselTrack');
+                                        if (track) {
+                                            track.scrollBy({ left: 368, behavior: 'smooth' });
+                                        }
+                                    }}
+                                >
+                                    ›
+                                </button>
+                            </div>
+                        </div>
+            </section>
+
             {/* 6. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
+            <section>
             <div className={`long-card-section ${service ? 'loaded' : ''}`}>
                 <LongCard service={service} />
             </div>
+            </section>
 
             <section className="details-page-section final-section">
                 <div className="section-container">
-                
+                <h3 className="section-title">Get Started</h3>
                 {/* 7. PRICE CARDS */}
                 <div className="price-cards-section">
                     <div className="grid-responsive-3">
                         <div className="card-container card-hover-up">
-                            <PriceCard service={service} />
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Calculate"
+                                customTitle="With Portal"
+                                customDescription="Get instant quotes and automated calculations for your insurance needs with our advanced calculator system."
+                                customFeatures={[
+                                    { icon: 'calculator', text: 'Instant Quotes' },
+                                    { icon: 'chart', text: 'Real-time Analysis' },
+                                    { icon: 'time', text: 'Quick Results' },
+                                    { icon: 'checkmark', text: 'Accurate Pricing' }
+                                ]}
+                                showPrice={false}
+                            />
                         </div>
                         <div className="card-container card-hover-up">
-                            <PriceCard service={service} />
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Payment"
+                                customTitle="Minimum Payment"
+                                customDescription="Start with our minimum payment option and get essential coverage with flexible payment terms."
+                                customPrice={49}
+                                customFeatures={[
+                                    { icon: 'heart', text: 'Basic Coverage' },
+                                    { icon: 'users', text: 'Family Protection' },
+                                    { icon: 'phone', text: '24/7 Support' },
+                                    { icon: 'calendar', text: 'Flexible Terms' }
+                                ]}
+                                showPrice={true}
+                            />
                         </div>
                         <div className="card-container card-hover-up">
-                            <PriceCard service={service} />
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Manual"
+                                customTitle="Custom Service"
+                                customDescription="Get personalized service with manual processing and expert consultation for your specific requirements."
+                                customFeatures={[
+                                    { icon: 'star', text: 'Personalized Service' },
+                                    { icon: 'support', text: 'Expert Consultation' },
+                                    { icon: 'document', text: 'Manual Processing' },
+                                    { icon: 'shield', text: 'Premium Support' }
+                                ]}
+                                showPrice={false}
+                            />
                         </div>
                     </div>
                 </div>

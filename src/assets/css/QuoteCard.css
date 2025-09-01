@@ -138,6 +138,14 @@
   color: #8ed500;
 }
 
+.quote-last-update {
+  font-size: 8px;
+  font-weight: 400;
+  color: #8ed500;
+  display: block;
+  margin-bottom: 2px;
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .quote-parent {

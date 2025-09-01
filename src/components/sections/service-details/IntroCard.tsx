@@ -43,7 +43,7 @@ const IntroCard: React.FC<IntroCardProps> = ({ service }) => {
         </div>
         <div className="intro_card__body">
           <h3 className="intro_card__name">Prime One</h3>
-          <p className="intro_card__job">insurance & tax agency </p>
+
           <p className="intro_card__bio">American Trusted Agency That Cares About Your Needs</p>
         </div>
         <div className="intro_card__footer">

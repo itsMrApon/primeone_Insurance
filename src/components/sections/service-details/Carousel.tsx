@@ -36,54 +36,54 @@ const Carousel: React.FC<CarouselProps> = ({ service }) => {
     <section className="hero-carousel-wrapper">
       <main className="hero-main">
         <ul className="hero-slider">
-          <li className="hero-item" style={{backgroundImage: "url('https://cdn.mos.cms.futurecdn.net/dP3N4qnEZ4tCTCLq59iysd.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1560472355-536de3962603?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
               <h2 className="hero-title">&ldquo;{service.title}&rdquo;</h2>
               <p className="hero-description">{service.description}</p>
               <button className="hero-btn">Read More</button>
             </div>
           </li>
-          <li className="hero-item" style={{backgroundImage: "url('https://i.redd.it/tc0aqpv92pn21.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
-              <h2 className="hero-title">&ldquo;Professional Service&rdquo;</h2>
+              <h2 className="hero-title">&ldquo;Insurance Protection&rdquo;</h2>
               <p className="hero-description">
-                Expert solutions tailored to your needs with years of experience and dedication.
+                Comprehensive insurance solutions to protect what matters most to you and your family.
               </p>
               <button className="hero-btn">Read More</button>
             </div>
           </li>
-          <li className="hero-item" style={{backgroundImage: "url('https://wharferj.files.wordpress.com/2015/11/bio_north.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1554224154-26032ffc0d07?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
-              <h2 className="hero-title">&ldquo;Trusted Partnership&rdquo;</h2>
+              <h2 className="hero-title">&ldquo;Tax Services&rdquo;</h2>
               <p className="hero-description">
-                Building lasting relationships through reliable service and professional excellence.
+                Expert tax preparation and planning services to maximize your savings and ensure compliance.
               </p>
               <button className="hero-btn">Read More</button>
             </div>
           </li>
-          <li className="hero-item" style={{backgroundImage: "url('https://images7.alphacoders.com/878/878663.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
-              <h2 className="hero-title">&ldquo;Quality Assurance&rdquo;</h2>
+              <h2 className="hero-title">&ldquo;Financial Planning&rdquo;</h2>
               <p className="hero-description">
-                Comprehensive solutions with attention to detail and commitment to excellence.
+                Strategic financial planning and investment advice to secure your financial future.
               </p>
               <button className="hero-btn">Read More</button>
             </div>
           </li>
-          <li className="hero-item" style={{backgroundImage: "url('https://theawesomer.com/photos/2017/07/simon_stalenhag_the_electric_state_6.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
-              <h2 className="hero-title">&ldquo;Innovation Focus&rdquo;</h2>
+              <h2 className="hero-title">&ldquo;Professional Team&rdquo;</h2>
               <p className="hero-description">
-                Cutting-edge approaches combined with proven methodologies for optimal results.
+                Experienced professionals dedicated to providing personalized service and expert guidance.
               </p>
               <button className="hero-btn">Read More</button>
             </div>
           </li>
-          <li className="hero-item" style={{backgroundImage: "url('https://da.se/app/uploads/2015/09/simon-december1994.jpg')"}}>
+          <li className="hero-item" style={{backgroundImage: "url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&auto=format&fit=crop&w=1926&q=80')"}}>
             <div className="hero-content">
               <h2 className="hero-title">&ldquo;Client Success&rdquo;</h2>
               <p className="hero-description">
-                Dedicated support and personalized service to achieve your business objectives.
+                Building lasting relationships through reliable service and achieving your financial goals.
               </p>
               <button className="hero-btn">Read More</button>
             </div>

@@ -19,7 +19,7 @@ const ShortCard: React.FC<ShortCardProps> = ({ service }) => {
           <div className="short-dot"></div>
           
           <h1 className="short-title">
-            <span>experience our</span><br />
+            <span>Experience our</span><br />
             <strong>{service.details_short?.split(' ').slice(0, 2).join(' ')}</strong> <span>{service.details_short?.split(' ').slice(2).join(' ')}</span><br />
             <span> today</span>
           </h1>
