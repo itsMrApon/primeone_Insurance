@@ -159,13 +159,13 @@ html.dark .intro-contact-section {
 
 @media (max-width: 768px) {
   .hero-carousel-wrapper {
-    height: 200px !important;
+    height: 250px !important;
   }
 }
 
 @media (max-width: 480px) {
   .hero-carousel-wrapper {
-    height: 150px !important;
+    height: 220px !important;
   }
 }
 
@@ -437,7 +437,7 @@ html.dark .intro-contact-section {
 
 @media (max-width: 768px) {
   .pdf-carousel-container {
-    height: 600px;
+    height: 480px;
     overflow-y: hidden;
     overflow-x: auto;
     position: relative;
@@ -447,7 +447,7 @@ html.dark .intro-contact-section {
 
 @media (max-width: 480px) {
   .pdf-carousel-container {
-    height: 510px;
+    height: 460px;
     overflow-y: hidden;
     overflow-x: auto;
     position: relative;
@@ -487,7 +487,7 @@ html.dark .intro-contact-section {
 @media (max-width: 768px) {
   .pdf-card-slide {
     width: 280px;
-    height: 340px;
+    height: 380px;
     margin-right: 4rem;
   }
 }
@@ -495,7 +495,7 @@ html.dark .intro-contact-section {
 @media (max-width: 480px) {
   .pdf-card-slide {
     width: 260px;
-    height: 330px;
+    height: 380px;
     margin-right: 3.5rem;
   }
 }
@@ -672,7 +672,7 @@ html.dark .carousel-nav-btn:hover {
   }
   
   .hero-carousel-wrapper {
-    height: 200px !important;
+    height: 340px !important;
   }
   
   .contact-cards-section,

@@ -161,8 +161,14 @@ export default function Section1({ serviceId }: Section1Props) {
                 </div>
             </section>
             
+            {/* 3. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
+            <section>
+            <div className={`long-card-section ${service ? 'loaded' : ''}`}>
+                <LongCard service={service} />
+            </div>
+            </section>
 
-            {/* Services Grid */}
+            {/* 4. Services Grid */}
             <section id="services" className="services-grid-section">
                         <div className="services-grid">
 
@@ -229,10 +235,7 @@ export default function Section1({ serviceId }: Section1Props) {
                         </div>
             </section>
             
-
-
-
-            {/* PDF Carousel Section */}
+            {/* 5. PDF Carousel Section */}
             <section className="pdf-carousel-section">
                         <h3 className="section-title">Documents & Resources</h3>
                         <div className="pdf-carousel-container">
@@ -284,13 +287,7 @@ export default function Section1({ serviceId }: Section1Props) {
                         </div>
             </section>
 
-            {/* 6. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
-            <section>
-            <div className={`long-card-section ${service ? 'loaded' : ''}`}>
-                <LongCard service={service} />
-            </div>
-            </section>
-
+            {/* 6. PRICE CARDS */}
             <section className="details-page-section final-section">
                 <div className="section-container">
                 <h3 className="section-title">Get Started</h3>
@@ -316,9 +313,8 @@ export default function Section1({ serviceId }: Section1Props) {
                             <PriceCard 
                                 service={service} 
                                 customCallToAction="Payment"
-                                customTitle="Minimum Payment"
+                                customTitle="Minimum Transition"
                                 customDescription="Start with our minimum payment option and get essential coverage with flexible payment terms."
-                                customPrice={49}
                                 customFeatures={[
                                     { icon: 'heart', text: 'Basic Coverage' },
                                     { icon: 'users', text: 'Family Protection' },

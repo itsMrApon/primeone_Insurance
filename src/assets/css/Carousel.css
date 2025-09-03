@@ -297,14 +297,14 @@ html.dark .hero-nav .hero-btn-nav:hover {
 /* Mobile height overrides for details page responsiveness */
 @media (max-width: 768px) {
   .hero-carousel-wrapper {
-    height: 140px;
-    min-height: 140px;
+    height: 200px;
+    min-height: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .hero-carousel-wrapper {
-    height: 110px;
-    min-height: 110px;
+    height: 180px;
+    min-height: 180px;
   }
 }
