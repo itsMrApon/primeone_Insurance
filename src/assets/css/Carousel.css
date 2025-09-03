@@ -293,3 +293,18 @@ html.dark .hero-nav .hero-btn-nav:hover {
     opacity: 0;
   }
 }
+
+/* Mobile height overrides for details page responsiveness */
+@media (max-width: 768px) {
+  .hero-carousel-wrapper {
+    height: 140px;
+    min-height: 140px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-carousel-wrapper {
+    height: 110px;
+    min-height: 110px;
+  }
+}

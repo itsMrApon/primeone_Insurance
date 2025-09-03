@@ -18,6 +18,16 @@ section .carousel-section {
   min-height: 100vh;
 }
 
+/* Let carousel section shrink on tablets/phones to avoid leftover whitespace */
+@media (max-width: 1024px) {
+  .carousel-section,
+  .details-page-section .carousel-section,
+  section .carousel-section {
+    height: auto;
+    min-height: auto;
+  }
+}
+
 /* Theme support for details page section */
 .details-page-section {
   background-color: #ffffff;
@@ -477,15 +487,15 @@ html.dark .intro-contact-section {
 @media (max-width: 768px) {
   .pdf-card-slide {
     width: 280px;
-    height: 400px;
+    height: 340px;
     margin-right: 4rem;
   }
 }
 
 @media (max-width: 480px) {
   .pdf-card-slide {
-    width: 250px;
-    height: 420px;
+    width: 260px;
+    height: 330px;
     margin-right: 3.5rem;
   }
 }
@@ -670,7 +680,7 @@ html.dark .carousel-nav-btn:hover {
   .short-quotes-section,
   .long-card-section {
     height: auto;
-    min-height: 300px;
+    min-height: auto;
   }
 }
 
