@@ -179,10 +179,10 @@ export default function Section1({ serviceId }: Section1Props) {
                                 <div className="experience-cards">
                                     <QuoteCard service={service} customCallToAction="FAQ Quote" customTitle="FAQ" />
                                 </div>
+                                <p className="expertise-text">With our portal, you can manage your account with ease .</p>
                                 <div className="experience-cards">
                                     <QuoteCard service={service} customCallToAction="Portal Quote" customTitle="Portal" />
                                 </div>
-                                
                                 
                             </div>
 
@@ -224,7 +224,7 @@ export default function Section1({ serviceId }: Section1Props) {
                                 </div>
                                 <h3 className="column-title">Communication</h3>
                                 <div className="soft-skills">
-                                    <span className="skill-tag">#IndividualPortal</span>
+                                    <span className="skill-tag">#IndividualCare</span>
                                     <span className="skill-tag">#EasySolutions</span>
                                     <span className="skill-tag">#Analytical</span>
                                     <span className="skill-tag">#Bangali</span>
