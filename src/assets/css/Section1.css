@@ -172,9 +172,9 @@ html.dark .intro-contact-section {
 
 /* Carousel responsive overrides */
 .hero-carousel-wrapper {
-  width: 100% !important;
-  max-width: 100% !important;
-  height: 300px !important;
+  width: 100%;
+  max-width: 100%;
+  height: 300px;
 }
 
 /* Hero Theme Toggle Button - Bottom Right Corner */
@@ -200,7 +200,7 @@ html.dark .hero-theme-toggle {
 
 @media (max-width: 768px) {
   .hero-carousel-wrapper {
-    height: 250px !important;
+    height: 250px;
   }
   
   .hero-theme-toggle {
@@ -214,7 +214,7 @@ html.dark .hero-theme-toggle {
 
 @media (max-width: 480px) {
   .hero-carousel-wrapper {
-    height: 220px !important;
+    height: 220px;
   }
   
   .hero-theme-toggle {
@@ -626,71 +626,21 @@ html.dark .carousel-nav-btn:hover {
 }
 
 /* Dark mode support for Services Grid */
-html.dark .services-grid-section {
-  background-color: #0f0f0f;
-  color: #ffffff;
-}
-
+html.dark .services-grid-section { background-color: #0f0f0f; color: #ffffff; }
 html.dark .services-grid-section .section-title,
-html.dark .services-grid-section .column-title {
-  color: #ffffff;
-}
-
-html.dark .services-grid-section .expertise-text {
-  color: #cccccc;
-}
-
-html.dark .services-grid-section .skill-tag {
-  background: #333333;
-  color: #ffffff;
-  border-color: #555555;
-}
-
-html.dark .services-grid-section .skill-tag:nth-child(4) {
-  background: #007bff;
-  color: white;
-  border-color: #007bff;
-}
-
-/* Dark mode for section gaps - Services Grid */
-html.dark .services-grid-section {
-  background-color: #0f0f0f;
-}
+html.dark .services-grid-section .column-title { color: #ffffff; }
+html.dark .services-grid-section .expertise-text { color: #cccccc; }
+html.dark .services-grid-section .skill-tag { background: #333333; color: #ffffff; border-color: #555555; }
+html.dark .services-grid-section .skill-tag:nth-child(4) { background: #007bff; color: white; border-color: #007bff; }
 
 /* Dark mode support for PDF Carousel */
-html.dark .pdf-carousel-section {
-  background-color: #0f0f0f;
-  color: #ffffff;
-}
-
-html.dark .pdf-carousel-section .section-title {
-  color: #ffffff;
-}
-
-html.dark .pdf-carousel-container {
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* Dark mode for section gaps - PDF Carousel */
-html.dark .pdf-carousel-section {
-  background-color: #0f0f0f;
-}
+html.dark .pdf-carousel-section { background-color: #0f0f0f; color: #ffffff; }
+html.dark .pdf-carousel-section .section-title { color: #ffffff; }
+html.dark .pdf-carousel-container { background: linear-gradient(135deg, rgba(0,0,0,.3), rgba(0,0,0,.1)); border: 1px solid rgba(255,255,255,.1); }
 
 /* Dark mode support for Price Cards Section */
-html.dark .final-section {
-  background-color: #0f0f0f;
-  color: #ffffff;
-}
-
-html.dark .final-section .section-title {
-  color: #ffffff;
-}
-
-/* Dark mode for section gaps - Price Cards */
-html.dark .final-section {
-  background-color: #0f0f0f;
-}
+html.dark .final-section { background-color: #0f0f0f; color: #ffffff; }
+html.dark .final-section .section-title { color: #ffffff; }
 
 /* Long Card Section - Full Width with Proper Spacing */
 .long-card-section {
@@ -857,10 +807,13 @@ html.dark .long-card-section {
   outline-offset: 2px;
 }
 
-/* Smooth transitions for all interactive elements */
-.details-page-section * {
+/* Smooth transitions for common interactive elements only (avoid global *) */
+.card-hover-up,
+.carousel-nav-btn,
+.skill-item,
+.clip_title {
   transition-property: background-color, border-color, color, transform, box-shadow;
-  transition-duration: 300ms;
+  transition-duration: 200ms;
   transition-timing-function: ease-in-out;
 }
 
@@ -913,4 +866,18 @@ html.dark .long-card-section {
 /* Group hover effects */
 .group:hover .slide-up-hover {
   transform: translateY(-100%);
+}
+
+/* Section headings padding (Get Started, Expertise, Visualization, Who We Are, Documents & Resources) */
+.section-title {
+  padding: 1.5rem 1.25rem;
+}
+
+.column-title {
+  padding: 1.25rem 1rem;
+}
+
+@media (max-width: 768px) {
+  .section-title { padding: 1.1rem 1rem; }
+  .column-title { padding: 1rem 0.75rem; }
 }
