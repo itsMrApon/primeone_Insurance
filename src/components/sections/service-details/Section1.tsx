@@ -108,9 +108,13 @@ export default function Section1({ serviceId }: Section1Props) {
             <section>
              <div className="carousel-section">
                 <Carousel service={service} />
+                {/* Theme Toggle Button - Bottom Right Corner */}
+                <div className="hero-theme-toggle">
+                    <ThemeCard />
+                </div>
              </div>
             </section>
-            
+
             {/* 2. NEW GRID LAYOUT - Intro + Introduction + Contact */}
             <section className="intro-contact-section">
                 <div className="intro-contact-grid">
@@ -160,15 +164,73 @@ export default function Section1({ serviceId }: Section1Props) {
                     </div>
                 </div>
             </section>
+
+            {/* 3. PRICE CARDS */}
+            <section className="details-page-section final-section">
+                <div className="section-container">
+                <h3 className="section-title">Get Started</h3>
+                {/* 7. PRICE CARDS */}
+                <div className="price-cards-section">
+                    <div className="grid-responsive-3">
+                        <div className="card-container card-hover-up">
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Calculate"
+                                customTitle="With Portal"
+                                customDescription="Get instant quotes and automated calculations for your insurance needs with our advanced calculator system."
+                                customFeatures={[
+                                    { icon: 'calculator', text: 'Instant Quotes' },
+                                    { icon: 'chart', text: 'Real-time Analysis' },
+                                    { icon: 'time', text: 'Quick Results' },
+                                    { icon: 'checkmark', text: 'Accurate Pricing' }
+                                ]}
+                                showPrice={false}
+                            />
+                        </div>
+                        <div className="card-container card-hover-up">
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Payment"
+                                customTitle="Minimum Transition"
+                                customDescription="Start with our minimum payment option and get essential coverage with flexible payment terms."
+                                customFeatures={[
+                                    { icon: 'heart', text: 'Basic Coverage' },
+                                    { icon: 'users', text: 'Family Protection' },
+                                    { icon: 'phone', text: '24/7 Support' },
+                                    { icon: 'calendar', text: 'Flexible Terms' }
+                                ]}
+                                showPrice={true}
+                            />
+                        </div>
+                        <div className="card-container card-hover-up">
+                            <PriceCard 
+                                service={service} 
+                                customCallToAction="Manual"
+                                customTitle="Custom Service"
+                                customDescription="Get personalized service with manual processing and expert consultation for your specific requirements."
+                                customFeatures={[
+                                    { icon: 'star', text: 'Personalized Service' },
+                                    { icon: 'support', text: 'Expert Consultation' },
+                                    { icon: 'document', text: 'Manual Processing' },
+                                    { icon: 'shield', text: 'Premium Support' }
+                                ]}
+                                showPrice={false}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+            </section>
             
-            {/* 3. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
+            {/* 4. LONG CARD - FULL WIDTH OUTSIDE CONTAINER */}
             <section>
             <div className={`long-card-section ${service ? 'loaded' : ''}`}>
                 <LongCard service={service} />
             </div>
             </section>
 
-            {/* 4. Services Grid */}
+            {/* 5. Services Grid */}
             <section id="services" className="services-grid-section">
                         <div className="services-grid">
 
@@ -235,7 +297,7 @@ export default function Section1({ serviceId }: Section1Props) {
                         </div>
             </section>
             
-            {/* 5. PDF Carousel Section */}
+            {/* 6. PDF Carousel Section */}
             <section className="pdf-carousel-section">
                         <h3 className="section-title">Documents & Resources</h3>
                         <div className="pdf-carousel-container">
@@ -286,64 +348,7 @@ export default function Section1({ serviceId }: Section1Props) {
                             </div>
                         </div>
             </section>
-
-            {/* 6. PRICE CARDS */}
-            <section className="details-page-section final-section">
-                <div className="section-container">
-                <h3 className="section-title">Get Started</h3>
-                {/* 7. PRICE CARDS */}
-                <div className="price-cards-section">
-                    <div className="grid-responsive-3">
-                        <div className="card-container card-hover-up">
-                            <PriceCard 
-                                service={service} 
-                                customCallToAction="Calculate"
-                                customTitle="With Portal"
-                                customDescription="Get instant quotes and automated calculations for your insurance needs with our advanced calculator system."
-                                customFeatures={[
-                                    { icon: 'calculator', text: 'Instant Quotes' },
-                                    { icon: 'chart', text: 'Real-time Analysis' },
-                                    { icon: 'time', text: 'Quick Results' },
-                                    { icon: 'checkmark', text: 'Accurate Pricing' }
-                                ]}
-                                showPrice={false}
-                            />
-                        </div>
-                        <div className="card-container card-hover-up">
-                            <PriceCard 
-                                service={service} 
-                                customCallToAction="Payment"
-                                customTitle="Minimum Transition"
-                                customDescription="Start with our minimum payment option and get essential coverage with flexible payment terms."
-                                customFeatures={[
-                                    { icon: 'heart', text: 'Basic Coverage' },
-                                    { icon: 'users', text: 'Family Protection' },
-                                    { icon: 'phone', text: '24/7 Support' },
-                                    { icon: 'calendar', text: 'Flexible Terms' }
-                                ]}
-                                showPrice={true}
-                            />
-                        </div>
-                        <div className="card-container card-hover-up">
-                            <PriceCard 
-                                service={service} 
-                                customCallToAction="Manual"
-                                customTitle="Custom Service"
-                                customDescription="Get personalized service with manual processing and expert consultation for your specific requirements."
-                                customFeatures={[
-                                    { icon: 'star', text: 'Personalized Service' },
-                                    { icon: 'support', text: 'Expert Consultation' },
-                                    { icon: 'document', text: 'Manual Processing' },
-                                    { icon: 'shield', text: 'Premium Support' }
-                                ]}
-                                showPrice={false}
-                            />
-                        </div>
-                    </div>
-                </div>
-
-                </div>
-            </section>
+            
         </>
     );
 }

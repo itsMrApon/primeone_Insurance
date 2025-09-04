@@ -1,5 +1,23 @@
 /* Service Details Page Section Styles */
 
+/* Universal Section Wrapper */
+.section-wrapper {
+  background: #ffffff;
+  border-radius: 1.5rem; /* rounded corners */
+  padding: 2rem;
+  margin: 2rem auto;
+  width: 95%;
+  max-width: 1200px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+html.dark .section-wrapper {
+  background: #111111;
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+}
+
 /* Root-level carousel section - better specificity approach */
 .carousel-section {
   height: 100vh;
@@ -43,8 +61,10 @@ html.dark .details-page-section {
 
 /* New Grid Layout for Intro + Introduction + Contact */
 .intro-contact-section {
-  padding: 4rem 0;
-  background-color: #fafafa;
+  margin: 0;
+  padding: 0;
+  border-radius: inherit;
+  background: inherit;
 }
 
 .intro-contact-grid {
@@ -147,7 +167,7 @@ html.dark .details-page-section {
 
 /* Dark theme support for intro section */
 html.dark .intro-contact-section {
-  background-color: #0f0f0f;
+  background: inherit;
 }
 
 /* Carousel responsive overrides */
@@ -157,15 +177,53 @@ html.dark .intro-contact-section {
   height: 300px !important;
 }
 
+/* Hero Theme Toggle Button - Bottom Right Corner */
+.hero-theme-toggle {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 0.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Dark mode for hero theme toggle */
+html.dark .hero-theme-toggle {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
 @media (max-width: 768px) {
   .hero-carousel-wrapper {
     height: 250px !important;
+  }
+  
+  .hero-theme-toggle {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    right: auto;
+    padding: 0.3rem;
   }
 }
 
 @media (max-width: 480px) {
   .hero-carousel-wrapper {
     height: 220px !important;
+  }
+  
+  .hero-theme-toggle {
+    position: fixed;
+    bottom: 0.8rem;
+    left: 0.8rem;
+    right: auto;
+    left: auto;
+    padding: 0.25rem;
   }
 }
 
@@ -193,7 +251,10 @@ html.dark .intro-contact-section {
 /* //////// */
 /* Contact Section */
 .contact-section {
-  margin-bottom: 4rem;
+  margin: 0;
+  padding: 0;
+  border-radius: inherit;
+  background: inherit;
 }
 
 .contact-grid {
@@ -253,7 +314,10 @@ html.dark .intro-contact-section {
 
 /* Services Grid */
 .services-grid-section {
-  margin-bottom: 4rem;
+  margin: 0;
+  padding: 0;
+  border-radius: inherit;
+  background: inherit;
 }
 
 .services-grid {
@@ -418,7 +482,10 @@ html.dark .intro-contact-section {
 
 /* PDF Carousel Styles */
 .pdf-carousel-section {
-    padding: 2rem 1rem;
+  margin: 0;
+  padding: 0;
+  border-radius: inherit;
+  background: inherit;
 }
 
 .pdf-carousel-container {
@@ -558,6 +625,73 @@ html.dark .carousel-nav-btn:hover {
   background: rgba(0, 0, 0, 0.9);
 }
 
+/* Dark mode support for Services Grid */
+html.dark .services-grid-section {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+html.dark .services-grid-section .section-title,
+html.dark .services-grid-section .column-title {
+  color: #ffffff;
+}
+
+html.dark .services-grid-section .expertise-text {
+  color: #cccccc;
+}
+
+html.dark .services-grid-section .skill-tag {
+  background: #333333;
+  color: #ffffff;
+  border-color: #555555;
+}
+
+html.dark .services-grid-section .skill-tag:nth-child(4) {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+/* Dark mode for section gaps - Services Grid */
+html.dark .services-grid-section {
+  background-color: #0f0f0f;
+}
+
+/* Dark mode support for PDF Carousel */
+html.dark .pdf-carousel-section {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+html.dark .pdf-carousel-section .section-title {
+  color: #ffffff;
+}
+
+html.dark .pdf-carousel-container {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode for section gaps - PDF Carousel */
+html.dark .pdf-carousel-section {
+  background-color: #0f0f0f;
+}
+
+/* Dark mode support for Price Cards Section */
+html.dark .final-section {
+  background-color: #0f0f0f;
+  color: #ffffff;
+}
+
+html.dark .final-section .section-title {
+  color: #ffffff;
+}
+
+/* Dark mode for section gaps - Price Cards */
+html.dark .final-section {
+  background-color: #0f0f0f;
+}
+
 /* Long Card Section - Full Width with Proper Spacing */
 .long-card-section {
     width: 100vw;
@@ -566,26 +700,36 @@ html.dark .carousel-nav-btn:hover {
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
-    margin-bottom: 4rem;
+
     z-index: 1;
     background: transparent;
 }
 
+/* Dark mode for Long Card section gaps */
+html.dark .long-card-section {
+    background-color: #0f0f0f;
+}
+
 .long-card-section.expanded {
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
 }/* Final Section - Price Cards with Top Margin */
 .final-section {
-    margin-top: 4rem;
     clear: both;
     position: relative;
     z-index: 2;
+    margin: 0;
+    padding: 0;
+    border-radius: inherit;
+    background: inherit;
 }
 
 /* Price Cards Section */
 .price-cards-section {
     min-height: 550px;
-    padding: 1rem 0;
-    margin-top: 0.5rem;
+    margin: 0;
+    padding: 0;
+    border-radius: inherit;
+    background: inherit;
 }
 
 @media (max-width: 768px) {

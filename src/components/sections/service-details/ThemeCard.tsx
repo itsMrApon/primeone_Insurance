@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
-import { Service } from '@/types/service';
 import '@/assets/css/ThemeCard.css';
 
-interface ThemeCardProps {
-  service: Service;
-}
-
-const ThemeCard: React.FC<ThemeCardProps> = ({ service }) => {
+const ThemeCard: React.FC = () => {
   
   useEffect(() => {
     const checkbox = document.getElementById('theme-switch') as HTMLInputElement;
@@ -33,42 +28,12 @@ const ThemeCard: React.FC<ThemeCardProps> = ({ service }) => {
   }, []);
   
   return (
-    <>
-      <input id="theme-switch" type="checkbox" />
-      <div className="theme-app">
-        <div className="theme-body">
-          
-          <div className="theme-phone">
-          
-            <div className="theme-menu">
-              <div className="theme-time">4:20</div>
-              <div className="theme-icons">
-                <div className="theme-network"></div>
-                <div className="theme-battery"></div>
-              </div>
-            </div>
-          
-            <div className="theme-content">
-              <div className="theme-circle">
-                <div className="theme-crescent"></div>
-              </div>
-             
-              <label htmlFor="theme-switch">
-                <div className="theme-toggle"></div>
-                <div className="theme-names">
-                  <p className="theme-light">Light</p>
-                  <p className="theme-dark">Dark</p>
-                </div>
-              </label>
-              
-             
-            </div>
-            
-          </div>
-        </div>
-        
-      </div>
-    </>
+    <div className="toggle-switch">
+      <label className="switch-label">
+        <input type="checkbox" className="checkbox" id="theme-switch" />
+        <span className="slider"></span>
+      </label>
+    </div>
   );
 };
 
